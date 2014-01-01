@@ -1,0 +1,22 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Drop
+       [dbo].[CK_Goals_Name_unique] (Unique Constraint)
+     Create
+       [dbo].[CohortProperties] (Table)
+       [dbo].[Cohorts] (Table)
+       [dbo].[CK_Goals_SystemName_unique] (Unique Constraint)
+       Default Constraint on [dbo].[Cohorts].[UID] (Default Constraint)
+       Default Constraint on [dbo].[Cohorts].[Active] (Default Constraint)
+       [dbo].[FK_CohortProperties_ToCohort] (Foreign Key)
+
+** Supporting actions

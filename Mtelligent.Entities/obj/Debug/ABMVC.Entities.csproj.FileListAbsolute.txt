@@ -1,0 +1,5 @@
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Entities\bin\Debug\ABMVC.Entities.dll
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Entities\bin\Debug\ABMVC.Entities.pdb
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Entities\obj\Debug\ABMVC.Entities.csprojResolveAssemblyReference.cache
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Entities\obj\Debug\ABMVC.Entities.dll
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Entities\obj\Debug\ABMVC.Entities.pdb

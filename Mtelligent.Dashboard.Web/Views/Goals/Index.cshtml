@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Mtelligent.Entities.Goal>
+
+<div class="content">
+  <div class="row">
+
+    <h1>Goals</h1>
+    <p>Goals are things you want your users to do. You use goals to determine how different variations of an experiment are performing against each other.</p>
+
+    @if (Model.ToList().Count == 0)
+    {
+        <div class="alert alert-info">You currently have not configured any goals. Click "Add Goal" to add a goal.</div>
+    }
+    else
+    {
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th>System Name</th>
+                <th>Google Analytics Code</th>
+                <th>&nbsp;</th>
+            </tr>
+
+        @foreach (var goal in Model)
+        {
+            <tr>
+                <td>@goal.Name</td>
+                <td>@goal.SystemName</td>
+                <td>@goal.GACode</td>
+                <td><a href="/Goals/Update?Id=@goal.Id" class="btn btn-primary btn-lg active" role="button">Edit</a></td>
+            </tr>
+            
+        }
+        </table>
+
+    }
+
+    <a href="/Goals/Add" class="btn btn-primary btn-lg active" role="button">Add Goal</a>
+  </div>
+</div>

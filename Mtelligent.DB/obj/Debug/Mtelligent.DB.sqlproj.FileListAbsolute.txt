@@ -1,0 +1,9 @@
+C:\projects\Mtelligent\Mtelligent.DB\bin\Debug\Mtelligent.DB.dacpac
+C:\projects\Mtelligent\Mtelligent.DB\bin\Debug\Mtelligent.DB.dll
+C:\projects\Mtelligent\Mtelligent.DB\bin\Debug\Mtelligent.DB.pdb
+C:\projects\Mtelligent\Mtelligent.DB\obj\Debug\Mtelligent.DB.dll
+C:\projects\Mtelligent\Mtelligent.DB\obj\Debug\Mtelligent.DB.pdb
+C:\projects\Mtelligent\Mtelligent.DB\obj\Debug\Model.xml
+C:\projects\Mtelligent\Mtelligent.DB\obj\Debug\refactor.xml
+C:\projects\Mtelligent\Mtelligent.DB\obj\Debug\postdeploy.sql
+C:\projects\Mtelligent\Mtelligent.DB\obj\Debug\predeploy.sql

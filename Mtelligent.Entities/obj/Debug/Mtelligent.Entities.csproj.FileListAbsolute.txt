@@ -1,0 +1,5 @@
+C:\projects\Mtelligent\Mtelligent.Entities\bin\Debug\Mtelligent.Entities.dll
+C:\projects\Mtelligent\Mtelligent.Entities\bin\Debug\Mtelligent.Entities.pdb
+C:\projects\Mtelligent\Mtelligent.Entities\obj\Debug\Mtelligent.Entities.csprojResolveAssemblyReference.cache
+C:\projects\Mtelligent\Mtelligent.Entities\obj\Debug\Mtelligent.Entities.dll
+C:\projects\Mtelligent\Mtelligent.Entities\obj\Debug\Mtelligent.Entities.pdb

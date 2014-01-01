@@ -1,0 +1,77 @@
+﻿@model Mtelligent.Entities.Goal
+
+@{
+    string action = ViewBag.ActionName;
+    string errorMessage = ViewBag.ErrorMessage ?? "";
+}
+ <div class="content">
+      <div class="row">
+
+    <h1>@ViewBag.Title</h1>
+
+
+@using (Html.BeginForm(action, "Goals", FormMethod.Post, new { @class="form-horizontal", role="form" } ))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(m => m.Id)
+
+    if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="alert alert-danger">@errorMessage</div>
+    }
+    
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Name)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.SystemName, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.SystemName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.SystemName)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.GACode, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.GACode, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.GACode)
+        </div>
+    </div>
+     <div class="form-group">
+        @Html.LabelFor(m => m.CustomJS, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+                @Html.TextAreaFor(m => m.CustomJS, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.CustomJS)
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">@action</button>
+        </div>
+    </div>
+}
+
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+            $("#SystemName").focus(function () {
+                if ($("#Name").val() != "" && $("#SystemName").val() == "") {
+                    $("#SystemName").val($("#Name").val());
+                }
+            });
+
+            if ($("#SystemName").val() != "") {
+                $("#SystemName").attr("disabled", "disabled");
+                $("#SystemName").after("<input type='hidden' name='" + $("#SystemName").attr("name") + "' value='" + $("#SystemName").val() + "'>");
+            }
+        });
+    </script>
+
+}

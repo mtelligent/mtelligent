@@ -1,0 +1,10 @@
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Configuration.Tests\bin\Debug\ABMVC.Configuration.Tests.dll.config
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Configuration.Tests\bin\Debug\ABMVC.Configuration.Tests.dll
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Configuration.Tests\bin\Debug\ABMVC.Configuration.Tests.pdb
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Configuration.Tests\bin\Debug\ABMVC.Configuration.dll
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Configuration.Tests\bin\Debug\nunit.framework.dll
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Configuration.Tests\bin\Debug\ABMVC.Configuration.pdb
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Configuration.Tests\bin\Debug\nunit.framework.xml
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Configuration.Tests\obj\Debug\ABMVC.Configuration.Tests.csprojResolveAssemblyReference.cache
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Configuration.Tests\obj\Debug\ABMVC.Configuration.Tests.dll
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Configuration.Tests\obj\Debug\ABMVC.Configuration.Tests.pdb

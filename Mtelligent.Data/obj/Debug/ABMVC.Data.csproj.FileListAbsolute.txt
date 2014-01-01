@@ -1,0 +1,9 @@
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Data\bin\Debug\ABMVC.Data.dll
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Data\bin\Debug\ABMVC.Data.pdb
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Data\bin\Debug\ABMVC.Configuration.dll
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Data\bin\Debug\ABMVC.Entities.dll
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Data\bin\Debug\ABMVC.Entities.pdb
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Data\bin\Debug\ABMVC.Configuration.pdb
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Data\obj\Debug\ABMVC.Data.csprojResolveAssemblyReference.cache
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Data\obj\Debug\ABMVC.Data.dll
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Data\obj\Debug\ABMVC.Data.pdb

@@ -1,0 +1,21 @@
+﻿** Warnings
+     The object reference [dbo].[SiteUrls].[SiteID] differs only by case from the object definition
+       [dbo].[SiteUrls].[SiteId].
+
+** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Sites] (Table)
+       [dbo].[SiteUrls] (Table)
+       [dbo].[FK_SiteUrls_ToSites] (Foreign Key)
+
+** Supporting actions

@@ -1,0 +1,5 @@
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Configuration\bin\Debug\ABMVC.Configuration.dll
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Configuration\bin\Debug\ABMVC.Configuration.pdb
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Configuration\obj\Debug\ABMVC.Configuration.csprojResolveAssemblyReference.cache
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Configuration\obj\Debug\ABMVC.Configuration.dll
+C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Configuration\obj\Debug\ABMVC.Configuration.pdb

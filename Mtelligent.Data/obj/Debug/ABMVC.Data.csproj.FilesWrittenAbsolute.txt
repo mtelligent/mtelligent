@@ -1,0 +1,9 @@
+/Users/davidsan/Projects/ABMVC/ABMVC/ABMVC.Data/obj/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/Users/davidsan/Projects/ABMVC/ABMVC/ABMVC.Data/bin/Debug/ABMVC.Data.dll.mdb
+/Users/davidsan/Projects/ABMVC/ABMVC/ABMVC.Data/bin/Debug/ABMVC.Data.dll
+/Users/davidsan/Projects/ABMVC/ABMVC/ABMVC.Data/obj/Debug/ABMVC.Data.dll
+/Users/davidsan/Projects/ABMVC/ABMVC/ABMVC.Data/obj/Debug/ABMVC.Data.dll.mdb
+/Users/davidsan/Projects/ABMVC/ABMVC/ABMVC.Data/bin/Debug/ABMVC.Entities.dll
+/Users/davidsan/Projects/ABMVC/ABMVC/ABMVC.Data/bin/Debug/ABMVC.Entities.dll.mdb
+/Users/davidsan/Projects/ABMVC/ABMVC/ABMVC.Data/bin/Debug/ABMVC.Configuration.dll
+/Users/davidsan/Projects/ABMVC/ABMVC/ABMVC.Data/bin/Debug/ABMVC.Configuration.dll.mdb

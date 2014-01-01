@@ -1,0 +1,8 @@
+C:\projects\Mtelligent\Mtelligent.Configuration.Tests\bin\Debug\Mtelligent.Configuration.Tests.dll.config
+C:\projects\Mtelligent\Mtelligent.Configuration.Tests\bin\Debug\Mtelligent.Configuration.Tests.dll
+C:\projects\Mtelligent\Mtelligent.Configuration.Tests\bin\Debug\Mtelligent.Configuration.Tests.pdb
+C:\projects\Mtelligent\Mtelligent.Configuration.Tests\obj\Debug\Mtelligent.Configuration.Tests.csprojResolveAssemblyReference.cache
+C:\projects\Mtelligent\Mtelligent.Configuration.Tests\obj\Debug\Mtelligent.Configuration.Tests.dll
+C:\projects\Mtelligent\Mtelligent.Configuration.Tests\obj\Debug\Mtelligent.Configuration.Tests.pdb
+C:\projects\Mtelligent\Mtelligent.Configuration.Tests\bin\Debug\Mtelligent.Configuration.dll
+C:\projects\Mtelligent\Mtelligent.Configuration.Tests\bin\Debug\Mtelligent.Configuration.pdb

@@ -1,0 +1,29 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Experiments] (Table)
+       [dbo].[ExperimentSegments] (Table)
+       [dbo].[ExperimentSegmentVariableValues] (Table)
+       [dbo].[ExperimentVariables] (Table)
+       Default Constraint on [dbo].[Experiments].[UID] (Default Constraint)
+       Default Constraint on [dbo].[Experiments].[Active] (Default Constraint)
+       Default Constraint on [dbo].[ExperimentSegments].[UID] (Default Constraint)
+       Default Constraint on [dbo].[ExperimentSegments].[TargetPercentage] (Default Constraint)
+       Default Constraint on [dbo].[ExperimentSegments].[IsDefault] (Default Constraint)
+       Default Constraint on [dbo].[ExperimentSegmentVariableValues].[Value] (Default Constraint)
+       [dbo].[FK_Experiments_ToCohorts] (Foreign Key)
+       [dbo].[FK_ExperimentSegments_ToExperiments] (Foreign Key)
+       [dbo].[FK_ExperimentSegmentVariableValues_ToExperimentSegments] (Foreign Key)
+       [dbo].[FK_ExperimentSegmentVariableValues_ToExperimentVariables] (Foreign Key)
+       [dbo].[FK_ExperimentVariables_ToExperiments] (Foreign Key)
+
+** Supporting actions

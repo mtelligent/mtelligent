@@ -1,0 +1,17 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[CK_Goals_Name_unique] (Unique Constraint)
+       [dbo].[CK_Sites_NameUnique] (Unique Constraint)
+       [dbo].[CK_SiteUrls_Url_Unique] (Unique Constraint)
+
+** Supporting actions

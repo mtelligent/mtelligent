@@ -1,0 +1,21 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[Sites]
+       [dbo].[SiteUrls]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Table rebuild
+       [dbo].[Sites] (Table)
+       [dbo].[SiteUrls] (Table)
+
+** Supporting actions
+     Drop
+       [dbo].[FK_SiteUrls_ToSites] (Foreign Key)
+     Create
+       [dbo].[FK_SiteUrls_ToSites] (Foreign Key)

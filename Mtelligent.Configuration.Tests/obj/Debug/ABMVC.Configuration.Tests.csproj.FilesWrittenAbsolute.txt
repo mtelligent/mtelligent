@@ -1,0 +1,7 @@
+/Users/davidsan/Projects/ABMVC/ABMVC/ABMVC.Configuration.Tests/obj/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/Users/davidsan/Projects/ABMVC/ABMVC/ABMVC.Configuration.Tests/bin/Debug/ABMVC.Configuration.Tests.dll.mdb
+/Users/davidsan/Projects/ABMVC/ABMVC/ABMVC.Configuration.Tests/bin/Debug/ABMVC.Configuration.Tests.dll
+/Users/davidsan/Projects/ABMVC/ABMVC/ABMVC.Configuration.Tests/obj/Debug/ABMVC.Configuration.Tests.dll
+/Users/davidsan/Projects/ABMVC/ABMVC/ABMVC.Configuration.Tests/obj/Debug/ABMVC.Configuration.Tests.dll.mdb
+/Users/davidsan/Projects/ABMVC/ABMVC/ABMVC.Configuration.Tests/bin/Debug/ABMVC.Configuration.dll
+/Users/davidsan/Projects/ABMVC/ABMVC/ABMVC.Configuration.Tests/bin/Debug/ABMVC.Configuration.dll.mdb
