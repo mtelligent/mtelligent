@@ -15,6 +15,7 @@ namespace Mtelligent.Entities
 		public string Name { get; set; }
         public string SystemName { get; set; }
         public int TargetCohortId { get; set; }
+        public string TargetCohortName { get; set; }
         public Guid UID { get; set; }
 
 

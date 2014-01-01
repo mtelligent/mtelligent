@@ -265,6 +265,11 @@ namespace Mtelligent.Dashboard.Data
                 experiment.SegmentCount = Convert.ToInt32(reader["Segments"]);
             }
 
+            if (reader.HasColumn("TargetCohortName") && reader["TargetCohortName"] != DBNull.Value)
+            {
+                experiment.TargetCohortName = reader["TargetCohortName"].ToString();
+            }
+
             if (reader["CreatedBy"] != DBNull.Value)
             {
                 experiment.CreatedBy = reader["CreatedBy"].ToString();

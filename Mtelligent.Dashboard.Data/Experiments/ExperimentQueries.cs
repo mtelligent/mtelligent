@@ -8,8 +8,8 @@ namespace Mtelligent.Dashboard.Data
 {
     public class ExperimentQueries
     {
-        public const string GetExperiments = @"Select * from Experiments A inner join (select ExperimentId, count(*) 'Segments' from ExperimentSegments group by ExperimentID) B on A.Id = B.ExperimentID where A.Active=1";
-        public const string GetExperiment = @"Select * from Experiments where Id = @ExperimentId; Select * from ExperimentSegments where ExperimentId = @ExperimentId; Select ExperimentSegmentId, Name, Value from ExperimentVariables A inner join ExperimentSegmentVariableValues B on A.Id = B.ExperimentVariableId Where A.ExperimentID = @ExperimentId";
+        public const string GetExperiments = @"Select *, B.Segments, C.Name 'TargetCohortName' from Experiments A inner join (select ExperimentId, count(*) 'Segments' from ExperimentSegments group by ExperimentID) B on A.Id = B.ExperimentID inner join Cohorts C on A.TargetCohortId = C.ID where A.Active=1";
+        public const string GetExperiment = @"Select A.*, C.Name 'TargetCohortName' from Experiments A inner join Cohorts C on A.TargetCohortId = C.Id where A.Id = @ExperimentId; Select * from ExperimentSegments where ExperimentId = @ExperimentId; Select ExperimentSegmentId, Name, Value from ExperimentVariables A inner join ExperimentSegmentVariableValues B on A.Id = B.ExperimentVariableId Where A.ExperimentID = @ExperimentId";
         public const string AddExperiment =
                 @"Insert into Experiments (Name, SystemName, TargetCohortId, Created, CreatedBy) Values (@Name, @SystemName, @TargetCohortId, getDate(), @CreatedBy);
                 select * from Experiments where Id = scope_Identity()";
