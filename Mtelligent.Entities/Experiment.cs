@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Mtelligent.Entities
 {
@@ -12,9 +13,17 @@ namespace Mtelligent.Entities
 
 		public int Id { get; set; }
 
+        [Required]
 		public string Name { get; set; }
+
+        [Required]
+        [Display(Name="System Name")]
         public string SystemName { get; set; }
+
+        [Required]
+        [Display(Name="Target Cohort")]
         public int TargetCohortId { get; set; }
+        
         public string TargetCohortName { get; set; }
         public Guid UID { get; set; }
 

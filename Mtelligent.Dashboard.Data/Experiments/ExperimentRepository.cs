@@ -62,6 +62,14 @@ namespace Mtelligent.Dashboard.Data
 
                     while (reader.Read())
                     {
+                        var variable = reader["Name"].ToString();
+                        experiment.Variables.Add(variable);
+                    }
+
+                    reader.NextResult();
+
+                    while (reader.Read())
+                    {
                         AddVariableToSegment(experiment, reader);
                     }
                 }

@@ -34,7 +34,7 @@ namespace Mtelligent.Dashboard.Web.Controllers
 
         public ActionResult Add()
         {
-            AddCohortViewModel model = new AddCohortViewModel();
+            CohortViewModel model = new CohortViewModel();
             var config = (MtelligentSection)ConfigurationManager.GetSection("Mtelligent");
             model.CohortTypes = config.Cohorts.ToList().Where(a => a.AllowNew).ToList();
             return View(model);
@@ -42,7 +42,7 @@ namespace Mtelligent.Dashboard.Web.Controllers
 
         public ActionResult Update(int Id)
         {
-            AddCohortViewModel model = new AddCohortViewModel();
+            CohortViewModel model = new CohortViewModel();
 
             var cohort = cohortRepository.Get(Id);
             model.Name = cohort.Name;
@@ -90,7 +90,7 @@ namespace Mtelligent.Dashboard.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(AddCohortViewModel viewModel)
+        public ActionResult Add(CohortViewModel viewModel)
         {
             var config = (MtelligentSection)ConfigurationManager.GetSection("Mtelligent");
 
@@ -150,7 +150,7 @@ namespace Mtelligent.Dashboard.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Update(AddCohortViewModel viewModel)
+        public ActionResult Update(CohortViewModel viewModel)
         {
             var config = (MtelligentSection)ConfigurationManager.GetSection("Mtelligent");
 
