@@ -233,6 +233,7 @@
     <Compile Include="NavigationRoutes\NavigationRouteFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ExperimentViewModel.cs" />
+    <Compile Include="ViewModels\SegmentViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\body.css" />
@@ -388,6 +389,8 @@
     <Content Include="Views\Cohorts\Update.cshtml" />
     <Content Include="Views\Experiments\Add.cshtml" />
     <Content Include="Views\Experiments\Update.cshtml" />
+    <Content Include="Views\Experiments\AddSegment.cshtml" />
+    <Content Include="Views\Experiments\UpdateSegment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

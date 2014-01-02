@@ -1,4 +1,4 @@
-﻿@model Mtelpligent.Dashboard.Web.ViewModels.ExperimentViewModel
+﻿@model Mtelligent.Dashboard.Web.ViewModels.ExperimentViewModel
 
 @{
     string errorMessage = ViewBag.ErrorMessage ?? "";
@@ -14,6 +14,8 @@
       {
            @Html.AntiForgeryToken()
            @Html.ValidationSummary(true)
+
+           @Html.HiddenFor(m=>m.Experiment.Id)
 
             if (!string.IsNullOrEmpty(errorMessage))
             {
@@ -66,21 +68,24 @@
       <h2>Experiment Segments</h2>
 
       <p class="lead">Segments are the different variations that will be presented to your users as part of this experiment. The Default Segment will be shown to users that are not in the target cohort.</p>
-          
+      
+      <div class="alert alert-danger hide" id="clientSideErrors"></div>
+
     @if (Model.Experiment.Segments.Count == 0)
     {
         <div class="alert alert-info">You currently have not configured any segments. Click "Add Segment" to add a segment to this experiment. </div>
     }
     else
     {
-        using (Html.BeginForm("UpdateSegments", "Experiments", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "expForm" }))
+        using (Html.BeginForm("UpdateSegments", "Experiments", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "segForm" }))
         {
-            
+            <input type="hidden" name="experimentId" value="@Model.Experiment.Id" />
+        
         <table class="table table-striped">
             <tr>
                 <th>Name</th>
                 <th>System Name</th>
-                <th>Target Percentage</th>
+                <th>Target Percentage <span class="glyphicon glyphicon-resize-vertical" style="cursor:pointer" title="Auto Distribute Among Non Default Options" id="btnDistribute"></span></th>
                 <th>Is Default</th>
                 <th>&nbsp;</th>
             </tr>
@@ -90,19 +95,21 @@
             <tr>
                 <td>@segment.Name</td>
                 <td>@segment.SystemName</td>
-                <td>@segment.TargetPercentage</td>
-                <td><input class="form-control" name="@segment.Id-IsDefault" type="checkbox" checked="@segment.IsDefault" /></td>
-                <td><a href="/Experiments/UpdateSegment?Id=@segment.Id" class="btn btn-primary btn-lg active" role="button">Edit Details</a></td>
+                <td><input class="form-control targetPercentage" name="@segment.Id-TargetPercentage" type="text" value="@segment.TargetPercentage" /></td>
+                <td><input class="form-control isDefault" name="@segment.Id-IsDefault" type="checkbox" checked="@segment.IsDefault" value="true" /></td>
+                <td><a href="/Experiments/UpdateSegment?experimentId=@Model.Experiment.Id&segmentId=@segment.Id" class="btn btn-primary btn-lg active" role="button">Edit Details</a></td>
             </tr>
             
         }
         </table>
 
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <div><button type="submit" class="btn btn-default">Save Changes</button></div>
+            <div class="col-sm-10">
+                <div><button type="submit" class="btn btn-default">Save Segment Changes</button></div>
             </div>
         </div>  
+        <hr />
+        
         }
         
     }
@@ -127,6 +134,67 @@
               viewModel.initalVariableCount(viewModel.variables().length);
 
               ko.applyBindings(viewModel);
+
+              $(".isDefault").change(function(){
+                  if ($(this).prop('checked')){
+                      $(".isDefault").prop('checked', false);
+                      $(this).prop('checked', true);
+                  }
+              });
+
+              $("#btnDistribute").click(function(){
+                  var numItems = $(".isDefault").length
+                  var defID;
+
+                  if ($("input.isDefault:checkbox:checked").length > 0){
+                      numItems = numItems-1;
+                      defID = $("input.isDefault:checkbox:checked").attr("name").split("-")[0];
+                  }
+                  var distribution = Math.floor(100/numItems);
+
+                  var lastItem;
+                  
+                  $(".targetPercentage").each(function(index, item){
+                      if ($(item).attr("name").split("-")[0] != defID){
+                          $(item).val(distribution);
+                          lastItem = $(item);
+                      }
+                      else{
+                          $(item).val("0");
+                      }
+                        
+                  });
+
+                  lastItem.val(distribution + (100 - (numItems * distribution)));
+
+              });
+
+              $("#segForm").submit(function(event){
+                  console.log("trying to submit form");
+
+                  $("#clientSideErrors").addClass("hide");
+                  
+                  var sum = 0;
+                  $(".targetPercentage").each(function(index, item){
+                      console.log("adding:"  +  $(item).val());
+                      sum +=  parseFloat($(item).val());
+                  });
+
+                  console.log("sum:"  + sum);
+
+                  if (sum != 100){
+                      $("#clientSideErrors").text("The Sum of the Target Percentages must equal 100.");
+                      $("#clientSideErrors").removeClass("hide");
+                      event.preventDefault();
+                  }
+
+                  if ($("input.isDefault:checkbox:checked").length == 0 && $("#Experiment_TargetCohortId option:selected").text() != "All Users")
+                  {
+                      $("#clientSideErrors").text("Since this experiment does not target all users, one of the options must be the default options.");
+                      $("#clientSideErrors").removeClass("hide");
+                      event.preventDefault();
+                  }
+              });
           });
 
       </script>

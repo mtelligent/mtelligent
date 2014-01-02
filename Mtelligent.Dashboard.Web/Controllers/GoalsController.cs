@@ -34,6 +34,7 @@ namespace Mtelligent.Dashboard.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Add(Goal goal)
         {
             try
@@ -69,6 +70,7 @@ namespace Mtelligent.Dashboard.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Update(Goal goal)
         {
             try

@@ -9,6 +9,7 @@ using System.Web.Security;
 
 namespace Mtelligent.Dashboard.Web.Controllers
 {
+    [Authorize]
     public class SitesController : Controller
     {
         private ISiteRepository siteRepository;

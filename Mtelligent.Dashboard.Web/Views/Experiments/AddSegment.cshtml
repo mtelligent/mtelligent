@@ -1,0 +1,74 @@
+﻿@model Mtelligent.Dashboard.Web.ViewModels.SegmentViewModel
+
+@{
+    string errorMessage = ViewBag.ErrorMessage ?? "";
+}
+
+<div class="content">
+  <div class="row">
+
+    <h1>Add Segment to Experiment: [@Model.ExperimentName]</h1>
+
+      <p class="lead">Enter details for your segment. You will be able to set the target percentage and select a default segment on the Edit Experiment page after you create the segment.</p>
+
+      @using (Html.BeginForm("AddSegment", "Experiments", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "expForm" }))
+      {
+           @Html.AntiForgeryToken()
+           @Html.ValidationSummary(true)
+
+           @Html.HiddenFor(m=>m.ExperimentId)
+
+            if (!string.IsNullOrEmpty(errorMessage))
+            {
+                <div class="alert alert-danger">@errorMessage</div>
+            }
+        
+            <div class="form-group">
+            @Html.LabelFor(m => m.Segment.Name, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.Segment.Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Segment.Name)
+            </div>
+            </div>
+           <div class="form-group">
+            @Html.LabelFor(m => m.Segment.SystemName, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.Segment.SystemName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Segment.SystemName)
+            </div>
+            </div>
+            
+            <hr />
+          
+            <h3>Segment Variables</h3>
+          
+            foreach (var variable in Model.Variables)
+            {
+                var varValue = Model.Segment != null && Model.Segment.Variables != null && Model.Segment.Variables.ContainsKey(variable) ? Model.Segment.Variables[variable] : string.Empty;
+                <div class="form-group">
+                <label class="col-sm-2 control-label" for="prop-@variable">@variable</label>
+                <div class="col-sm-10">
+                        <input class="form-control" data-val="true" data-val-required="The @variable field is required." id="prop-@variable" name="prop-@variable" type="text" value="@varValue">
+                        <span class="field-validation-valid" data-valmsg-for="prop-@variable" data-valmsg-replace="true"></span>
+                </div>
+                </div>
+            }
+            <hr />
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div><button type="submit" class="btn btn-default">Add Segment</button></div>
+                </div>
+            </div>  
+      }
+
+@section Scripts{
+          <script>
+              $(document).ready(function () {
+                  $("#Segment_SystemName").focus(function () {
+                      if ($("#Segment_Name").val() != "" && $("#Segment_SystemName").val() == "") {
+                          $("#Segment_SystemName").val($("#Segment_Name").val());
+                      }
+                  });
+              });
+          </script>
+}

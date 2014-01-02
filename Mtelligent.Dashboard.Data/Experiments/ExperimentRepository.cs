@@ -196,6 +196,8 @@ namespace Mtelligent.Dashboard.Data
                     _db.AddInParameter(cmd, "@Name", DbType.String, variable);
                     _db.AddInParameter(cmd, "@Value", DbType.String, segment.Variables[variable]);
 
+                    _db.AddOutParameter(cmd, "@ExperimentVariableID", DbType.Int32, 8);
+
                     rtnSegment.Variables.Add(variable, segment.Variables[variable]);
 
                     _db.ExecuteNonQuery(cmd);
@@ -213,6 +215,7 @@ namespace Mtelligent.Dashboard.Data
                 _db.AddInParameter(cmd, "@UpdatedBy", DbType.String, segment.UpdatedBy);
                 _db.AddInParameter(cmd, "@TargetPercentage", DbType.Double, segment.TargetPercentage);
                 _db.AddInParameter(cmd, "@IsDefault", DbType.Int32, segment.IsDefault);
+                _db.AddInParameter(cmd, "@ExperimentSegmentId", DbType.Int32, segment.Id);
 
                 _db.ExecuteNonQuery(cmd);
             }
@@ -231,6 +234,8 @@ namespace Mtelligent.Dashboard.Data
                     _db.AddInParameter(cmd, "@ExperimentSegmentID", DbType.Int32, segment.Id);
                     _db.AddInParameter(cmd, "@Name", DbType.String, variable);
                     _db.AddInParameter(cmd, "@Value", DbType.String, segment.Variables[variable]);
+
+                    _db.AddOutParameter(cmd, "@ExperimentVariableID", DbType.Int32, 8);
 
                     _db.ExecuteNonQuery(cmd);
                 }
@@ -369,7 +374,7 @@ namespace Mtelligent.Dashboard.Data
 
         private void AddVariableToSegment(Experiment experiment, IDataReader reader)
         {
-            var segmentID = Convert.ToInt32(reader["ExperimentSegementID"]);
+            var segmentID = Convert.ToInt32(reader["ExperimentSegmentId"]);
             var segment = experiment.Segments.FirstOrDefault(a => a.Id == segmentID);
             if (segment != null)
             {
