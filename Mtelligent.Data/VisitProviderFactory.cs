@@ -10,7 +10,7 @@ namespace Mtelligent.Data
 
 		public VisitProviderFactory()
 		{
-			_config = (MtelligentSection) ConfigurationManager.GetSection ("ABMVC");
+			_config = (MtelligentSection) ConfigurationManager.GetSection ("Mtelligent");
 		}
 
 		public VisitProviderFactory(MtelligentSection config)
@@ -18,9 +18,9 @@ namespace Mtelligent.Data
 			_config = config;
 		}
 
-		public IVisitProvider CreateProvider(){
+		public IVistorProvider CreateProvider(){
 			Type t = Type.GetType(_config.Data.VisitProviderType);
-			return Activator.CreateInstance(t) as IVisitProvider;
+			return Activator.CreateInstance(t) as IVistorProvider;
 		}
 	}
 }

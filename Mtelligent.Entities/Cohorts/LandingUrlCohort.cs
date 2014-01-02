@@ -43,5 +43,13 @@ namespace Mtelligent.Entities.Cohorts
             }
             return false;
         }
+
+        public override bool RequiresLandingUrls
+        {
+            get
+            {
+                return true;
+            }
+        }
     }
 }

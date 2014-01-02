@@ -12,11 +12,13 @@ namespace Mtelligent.Web
 	{
 		private static Mtelligent _instance = new Mtelligent();
 		private static MtelligentSection _config;
-		private static IVisitProvider _visitProvider;
+		private static IVistorProvider _visitProvider;
+
+        public Visitor CurrentVisitor { get; set; }
 
 		private Mtelligent ()
 		{
-			_config = (MtelligentSection) ConfigurationManager.GetSection ("ABMVC");
+			_config = (MtelligentSection) ConfigurationManager.GetSection ("Mtelligent");
 
 			VisitProviderFactory factory = new VisitProviderFactory (_config);
 			_visitProvider = factory.CreateProvider ();
@@ -33,48 +35,54 @@ namespace Mtelligent.Web
             
 		}
 
+        public void HandleBeginRequest(object sender, EventArgs e)
+        {
+            var visitor = GetVisitor(HttpContext.Current);
+        }
+
         public void HandlePreSendRequestHeaders(object sender, EventArgs e)
 		{
-			var visit = HttpContext.Current.Items ["ABMVC.Visit"] as Visit;
-
-			if (visit != null) {
-				ClientCookieManager cManager = new ClientCookieManager (visit.Visitor);
-				HttpCookie cookie = new HttpCookie (_config.Web.Cookie.Name, cManager.ToCookieValue ());
+			if (CurrentVisitor != null) {
+                HttpCookie cookie = new HttpCookie(_config.Web.Cookie.Name, CurrentVisitor.UID.ToString());
 				HttpContext.Current.Response.Cookies.Add (cookie);
 			}
 
-            ThreadPool.QueueUserWorkItem(delegate(object o)
+            if (CurrentVisitor.IsDirty)
             {
-                var v = o as Visit;
-                _visitProvider.RecordVisit(v);
-            }, visit);
+                ThreadPool.QueueUserWorkItem(delegate(object o)
+                {
+                    var v = o as Visitor;
+                    _visitProvider.SaveChanges(v);
+                }, CurrentVisitor);
+            }
 		}
 
-		public void HandleBeginRequest(object sender, EventArgs e)
-		{
-			var visit = TrackRequest (HttpContext.Current.Request);
-			//Store in Context to be able to fetch when needed.
-			HttpContext.Current.Items.Add ("ABMVC.Visit", visit);
-		}
 
-		public Visit TrackRequest(HttpRequest request) {
 
-			Visit visit = new Visit();
+		public Visitor GetVisitor(HttpContext context) {
+            var request = context.Request;
 
-			if (request.Cookies [_config.Web.Cookie.Name] != null) 
+            if (request.Cookies [_config.Web.Cookie.Name] != null) 
 			{
-				ClientCookieManager cManager = new ClientCookieManager (request.Cookies [_config.Web.Cookie.Name].Value);
-				visit.Visitor = new Visitor (new Guid(cManager.VisitorId));
+                CurrentVisitor = new Visitor(new Guid(request.Cookies[_config.Web.Cookie.Name].Value));
 			} 
 			else 
 			{
-				visit.Visitor = new Visitor ();
+                CurrentVisitor = new Visitor();
+                CurrentVisitor.FirstVisit = DateTime.Now;
+                CurrentVisitor.IsNew = true;
+                CurrentVisitor.IsDirty = true;
+                if (request.IsAuthenticated)
+                {
+                    CurrentVisitor.IsAuthenticated = true;
+                    CurrentVisitor.UserName = HttpContext.Current.User.Identity.Name;
+                }
 			}
 
-			visit.RequestedUrl = request.Url.ToString ();
-			visit.Referrer = request.UrlReferrer.ToString ();
+            CurrentVisitor.Request.RequestUrl = request.Url.ToString();
+            CurrentVisitor.Request.ReferrerUrl = request.UrlReferrer != null ? request.UrlReferrer.ToString() : string.Empty;
 
-			return visit;
+			return CurrentVisitor;
 		}
 
 	}

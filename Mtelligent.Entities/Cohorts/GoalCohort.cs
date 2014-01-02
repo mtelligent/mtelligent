@@ -35,7 +35,15 @@ namespace Mtelligent.Entities.Cohorts
 
         public override bool IsInCohort(Visitor visitor)
         {
-            return visitor.Converstions.Where(a => a == this.Goal).FirstOrDefault() != null;
+            return visitor.Conversions.Where(a => a.Name == this.Goal).FirstOrDefault() != null;
+        }
+
+        public override bool RequiresConversions
+        {
+            get
+            {
+                return true;
+            }
         }
     }
 

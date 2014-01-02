@@ -75,5 +75,13 @@ namespace Mtelligent.Entities.Cohorts
             }
             return false;
         }
+
+        public override bool RequiresDetails
+        {
+            get
+            {
+                return true;
+            }
+        }
     }
 }

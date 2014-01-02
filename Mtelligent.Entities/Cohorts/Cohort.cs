@@ -23,6 +23,45 @@ namespace Mtelligent.Entities
             return false;
         }
 
+        public virtual bool RequiresDetails
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        public virtual bool RequiresAttributes
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        public virtual bool RequiresConversions
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        public virtual bool RequiresReferrers
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        public virtual bool RequiresLandingUrls
+        {
+            get
+            {
+                return false;
+            }
+        }
 	}
 }
 

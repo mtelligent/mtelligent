@@ -42,5 +42,13 @@ namespace Mtelligent.Entities.Cohorts
             }
             return false;
         }
+
+        public override bool RequiresReferrers
+        {
+            get
+            {
+                return true;
+            }
+        }
     }
 }
