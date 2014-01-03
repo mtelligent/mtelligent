@@ -23,6 +23,8 @@ namespace Mtelligent.Entities
         [Required]
         [Display(Name="Target Cohort")]
         public int TargetCohortId { get; set; }
+
+        public Cohort TargetCohort { get; set; }
         
         public string TargetCohortName { get; set; }
         public Guid UID { get; set; }

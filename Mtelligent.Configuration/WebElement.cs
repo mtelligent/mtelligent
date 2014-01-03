@@ -17,6 +17,33 @@ namespace Mtelligent.Configuration
 				this ["cookie"] = value;
 			}
 		}
+
+
+        [ConfigurationProperty("useSession", DefaultValue = "false", IsRequired = false)]
+        public bool UseSession
+        {
+            get
+            {
+                return (bool)this["useSession"];
+            }
+            set
+            {
+                this["useSession"] = value;
+            }
+        }
+
+        [ConfigurationProperty("captureAllRequests", DefaultValue = "false", IsRequired = false)]
+        public bool CaptureAllRequests
+        {
+            get
+            {
+                return (bool)this["captureAllRequests"];
+            }
+            set
+            {
+                this["captureAllRequests"] = value;
+            }
+        }
 	}
 }
 

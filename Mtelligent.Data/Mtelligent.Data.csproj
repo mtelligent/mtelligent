@@ -47,10 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataExtensions.cs" />
+    <Compile Include="MtelligentQueries.cs" />
+    <Compile Include="MtelligentRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IVisitProvider.cs" />
+    <Compile Include="Interfaces\IMtelligentRepository.cs" />
     <Compile Include="SQLRepository.cs" />
-    <Compile Include="VisitProviderFactory.cs" />
+    <Compile Include="DataProviderFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Mtelligent.Configuration\Mtelligent.Configuration.csproj">
@@ -63,10 +65,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

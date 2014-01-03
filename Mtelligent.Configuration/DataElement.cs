@@ -6,16 +6,16 @@ namespace Mtelligent.Configuration
 
 	public class DataElement : ConfigurationElement
 	{
-		[ConfigurationProperty("visitProviderType", DefaultValue="", IsRequired = true)]
-		public string VisitProviderType
+        [ConfigurationProperty("providerType", DefaultValue = "Mtelligent.Data.MtelligentRepository, Mtelligent.Data", IsRequired = true)]
+		public string ProviderType
 		{
 			get 
 			{
-				return (string) this["visitProviderType"];
+                return (string)this["providerType"];
 			}
 			set
 			{
-                this["visitProviderType"] = value;
+                this["providerType"] = value;
 			}
 		}
 

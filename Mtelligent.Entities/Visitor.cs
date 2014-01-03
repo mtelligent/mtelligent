@@ -49,7 +49,7 @@ namespace Mtelligent.Entities
         public bool ReferrersLoaded { get; set; }
 
         public List<string> LandingUrls { get; set; }
-        public List<string> LandingUrlsLoaded { get; set; }
+        public bool LandingUrlsLoaded { get; set; }
 
         public bool IsNew { get; set; }
         public bool IsDirty { get; set; }
@@ -82,6 +82,38 @@ namespace Mtelligent.Entities
         public List<Goal> Conversions { get; set; }
         public List<Cohort> Cohorts { get; set; }
         public List<ExperimentSegment> ExperimentSegments { get; set; }
+
+        public string LandingUrl
+        {
+            get
+            {
+                var referrerURI = new Uri(this.ReferrerUrl);
+                var currentURI = new Uri(this.RequestUrl);
+
+                if (currentURI.Host != referrerURI.Host)
+                {
+                    return this.RequestUrl;
+                }
+
+                return null;
+            }
+        }
+
+        public string FilteredReferrer
+        {
+            get
+            {
+                var referrerURI = new Uri(this.ReferrerUrl);
+                var currentURI = new Uri(this.RequestUrl);
+
+                if (currentURI.Host != referrerURI.Host)
+                {
+                    return this.ReferrerUrl;
+                }
+
+                return null;
+            }
+        }
     }
 }
 
