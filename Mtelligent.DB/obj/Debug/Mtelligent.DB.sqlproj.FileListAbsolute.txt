@@ -1,0 +1,5 @@
+C:\projects\Mtelligent\Mtelligent.DB\bin\Debug\Mtelligent.DB.dacpac
+C:\projects\Mtelligent\Mtelligent.DB\bin\Debug\Mtelligent.DB.dll
+C:\projects\Mtelligent\Mtelligent.DB\bin\Debug\Mtelligent.DB.pdb
+C:\projects\Mtelligent\Mtelligent.DB\obj\Debug\Mtelligent.DB.dll
+C:\projects\Mtelligent\Mtelligent.DB\obj\Debug\Mtelligent.DB.pdb

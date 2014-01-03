@@ -1,0 +1,41 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[VisitorAttributes] (Table)
+       [dbo].[VisitorCohorts] (Table)
+       [dbo].[VisitorConversions] (Table)
+       [dbo].[VisitorLandingPages] (Table)
+       [dbo].[VisitorReferrers] (Table)
+       [dbo].[VisitorRequests] (Table)
+       [dbo].[Visitors] (Table)
+       [dbo].[VisitorSegments] (Table)
+       Default Constraint on [dbo].[VisitorAttributes].[Created] (Default Constraint)
+       Default Constraint on [dbo].[VisitorCohorts].[Created] (Default Constraint)
+       Default Constraint on [dbo].[VisitorConversions].[Created] (Default Constraint)
+       Default Constraint on [dbo].[VisitorLandingPages].[Created] (Default Constraint)
+       Default Constraint on [dbo].[VisitorReferrers].[Created] (Default Constraint)
+       Default Constraint on [dbo].[VisitorRequests].[Created] (Default Constraint)
+       Default Constraint on [dbo].[Visitors].[Created] (Default Constraint)
+       Default Constraint on [dbo].[VisitorSegments].[Created] (Default Constraint)
+       [dbo].[FK_VisitorAttributes_ToVisitors] (Foreign Key)
+       [dbo].[FK_VisitorCohorts_ToVisitors] (Foreign Key)
+       [dbo].[FK_VisitorCohorts_ToCohorts] (Foreign Key)
+       [dbo].[FK_VisitorConversions_ToVisitors] (Foreign Key)
+       [dbo].[FK_VisitorCohorts_ToGoals] (Foreign Key)
+       [dbo].[FK_VisitorLandingPages_ToVisitors] (Foreign Key)
+       [dbo].[FK_VisitorReferrers_ToVisitors] (Foreign Key)
+       [dbo].[FK_VisitorRequests_ToVisitors] (Foreign Key)
+       [dbo].[FK_VisitorSegments_ToVisitors] (Foreign Key)
+       [dbo].[FK_VisitorSegments_ToExperimentSegments] (Foreign Key)
+       [dbo].[FK_VisitorSegments_ToExperiments] (Foreign Key)
+
+** Supporting actions

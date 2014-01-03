@@ -72,11 +72,22 @@
     <Build Include="Tables\ExperimentVariables.sql" />
     <Build Include="Tables\ExperimentSegments.sql" />
     <Build Include="Tables\ExperimentSegmentVariableValues.sql" />
+    <Build Include="Tables\Visitors.sql" />
+    <Build Include="Tables\VisitorAttributes.sql" />
+    <Build Include="Tables\VisitorLandingPages.sql" />
+    <Build Include="Tables\VisitorReferrers.sql" />
+    <Build Include="Tables\VisitorSegments.sql" />
+    <Build Include="Tables\VisitorCohorts.sql" />
+    <Build Include="Tables\VisitorConversions.sql" />
+    <Build Include="Tables\VisitorRequests.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Mtelligent.DB.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Mtelligent.DB.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Indexes.sql" />
   </ItemGroup>
 </Project>
