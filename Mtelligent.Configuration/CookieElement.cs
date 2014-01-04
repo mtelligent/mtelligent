@@ -31,6 +31,19 @@ namespace Mtelligent.Configuration
                 this["domain"] = value;
             }
         }
+
+        [ConfigurationProperty("expires", DefaultValue = "365", IsRequired = false)]
+        public int Expires
+        {
+            get
+            {
+                return (int)this["expires"];
+            }
+            set
+            {
+                this["expires"] = value;
+            }
+        }
     }
 }
 

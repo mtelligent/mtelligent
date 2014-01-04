@@ -15,6 +15,7 @@ namespace Mtelligent.Entities
 
         public Visitor()
         {
+            this.UID = Guid.NewGuid();
             this.Request = new VisitorRequest();
             this.Attributes = new Dictionary<string, string>();
             this.Cohorts = new List<Cohort>();
@@ -78,6 +79,7 @@ namespace Mtelligent.Entities
     {
         public string RequestUrl { get; set; }
         public string ReferrerUrl { get; set; }
+        public Dictionary<string, string> Attributes { get; set; }
         public DateTime RequestDate { get; set; }
         public List<Goal> Conversions { get; set; }
         public List<Cohort> Cohorts { get; set; }
@@ -87,10 +89,17 @@ namespace Mtelligent.Entities
         {
             get
             {
-                var referrerURI = new Uri(this.ReferrerUrl);
-                var currentURI = new Uri(this.RequestUrl);
+                if (!string.IsNullOrEmpty(this.ReferrerUrl))
+                {
+                    var referrerURI = new Uri(this.ReferrerUrl);
+                    var currentURI = new Uri(this.RequestUrl);
 
-                if (currentURI.Host != referrerURI.Host)
+                    if (currentURI.Host != referrerURI.Host)
+                    {
+                        return this.RequestUrl;
+                    }
+                }
+                else
                 {
                     return this.RequestUrl;
                 }
@@ -103,14 +112,16 @@ namespace Mtelligent.Entities
         {
             get
             {
-                var referrerURI = new Uri(this.ReferrerUrl);
-                var currentURI = new Uri(this.RequestUrl);
-
-                if (currentURI.Host != referrerURI.Host)
+                if (!string.IsNullOrEmpty(this.ReferrerUrl))
                 {
-                    return this.ReferrerUrl;
-                }
+                    var referrerURI = new Uri(this.ReferrerUrl);
+                    var currentURI = new Uri(this.RequestUrl);
 
+                    if (currentURI.Host != referrerURI.Host)
+                    {
+                        return this.ReferrerUrl;
+                    }
+                }
                 return null;
             }
         }

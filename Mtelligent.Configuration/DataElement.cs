@@ -3,7 +3,6 @@ using System.Configuration;
 
 namespace Mtelligent.Configuration
 {
-
 	public class DataElement : ConfigurationElement
 	{
         [ConfigurationProperty("providerType", DefaultValue = "Mtelligent.Data.MtelligentRepository, Mtelligent.Data", IsRequired = true)]

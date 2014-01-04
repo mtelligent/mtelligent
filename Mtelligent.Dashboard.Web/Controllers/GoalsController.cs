@@ -14,9 +14,9 @@ namespace Mtelligent.Dashboard.Web.Controllers
     {
         private IGoalRepository goalRepository;
 
-        public GoalsController(IGoalRepository goalRepository)
+        public GoalsController()
         {
-            this.goalRepository = goalRepository;
+            this.goalRepository = new GoalRepository();
         }
 
         public ActionResult Index()

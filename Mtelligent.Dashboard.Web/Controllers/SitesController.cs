@@ -14,9 +14,9 @@ namespace Mtelligent.Dashboard.Web.Controllers
     {
         private ISiteRepository siteRepository;
 
-        public SitesController(ISiteRepository siteRepository)
+        public SitesController()
         {
-            this.siteRepository = siteRepository;
+            this.siteRepository = new SiteRepository();
         }
 
         //

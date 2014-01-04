@@ -102,56 +102,5 @@ namespace Mtelligent.Dashboard.Data
 
         }
 
-        private Goal ReaderToGoal(IDataReader reader)
-        {
-            var goal = new Goal();
-
-            if (reader["Id"] != DBNull.Value)
-            {
-                goal.Id = Convert.ToInt32(reader["Id"]);
-            }
-
-            if (reader["Name"] != DBNull.Value)
-            {
-                goal.Name = reader["Name"].ToString();
-            }
-
-            if (reader["SystemName"] != DBNull.Value)
-            {
-                goal.SystemName = reader["SystemName"].ToString();
-            }
-
-            if (reader["GACode"] != DBNull.Value)
-            {
-                goal.GACode = reader["GACode"].ToString();
-            }
-
-            if (reader["CustomJS"] != DBNull.Value)
-            {
-                goal.CustomJS = reader["CustomJS"].ToString();
-            }
-
-            if (reader["CreatedBy"] != DBNull.Value)
-            {
-                goal.CreatedBy = reader["CreatedBy"].ToString();
-            }
-
-            if (reader["UpdatedBy"] != DBNull.Value)
-            {
-                goal.UpdatedBy = reader["UpdatedBy"].ToString();
-            }
-
-            if (reader["Created"] != DBNull.Value)
-            {
-                goal.Created = Convert.ToDateTime(reader["Created"]);
-            }
-
-            if (reader["Updated"] != DBNull.Value)
-            {
-                goal.Updated = Convert.ToDateTime(reader["Updated"]);
-            }
-
-            return goal;
-        }
     }
 }

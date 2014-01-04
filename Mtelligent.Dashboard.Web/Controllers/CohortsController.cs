@@ -19,9 +19,9 @@ namespace Mtelligent.Dashboard.Web.Controllers
     {
         private ICohortRepository cohortRepository;
 
-        public CohortsController(ICohortRepository cohortRepository)
+        public CohortsController()
         {
-            this.cohortRepository = cohortRepository;
+            this.cohortRepository = new CohortRepository();
         }
 
         // GET: /Cohorts/

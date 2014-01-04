@@ -17,5 +17,85 @@ namespace Mtelligent.Data
             Select * from CohortProperties where CohortId = @CohortId";
 
         public const string GetGoal = @"Select * from Goals where SystemName = @GoalName";
+
+        public const string AddVisitor = @"INSERT INTO[Visitors] ([UID],[FirstVisit],[UserName],[IsAuthenticated]) VALUES
+                                           (@UID, @FirstVisit, @UserName, @IsAuthenticated) 
+                                          Select * from Visitors where Id = scope_Identity()";
+
+        public const string UpdateVisitor = "Update Visitors set UserName=@UserName, IsAuthenticated=@IsAuthenticated Where UID = @UID";
+
+        public const string GetVisitor = @"Select * from Visitors where UID = @UID";
+        public const string GetVisitorFromUserName = @"Select * from Visitors where UserName = @UserName";
+
+        public const string ReconcileVisitor = @"Select @ExistingID=ID from Visitors where UserName=@UserName
+                                                 if (@ExistingID is not null)
+                                                 Begin
+                                                     Select @VisitorID=ID from Visitors where UID=@UID
+                                                     Update Visitors Set ReconcilledVisitorId = @ExistingID where ID=@VisitorID
+                                                     Update VisitorReferrers set VisitorId=@ExistingID where VisitorId = @VisitorID
+                                                     Update VisitorLandingPages set VisitorId=@ExistingID where VisitorId = @VisitorID
+                                                     Update VisitorRequests set VisitorId=@ExistingID where VisitorId = @VisitorID
+                                                     Update VisitorAttributes set VisitorId=@ExistingID where VisitorId = @VisitorID and Name not in
+                                                         (Select Name from VisitorAttributes where VisitorId=@ExistingID)
+                                                     Update VisitorCohorts set VisitorId=@ExistingID where VisitorId = @VisitorID and CohortId not in
+                                                         (Select CohortId from VisitorCohorts where VisitorId=@ExistingID)
+                                                     Update VisitorConversions set VisitorId=@ExistingID where VisitorId = @VisitorID and GoalId not in
+                                                         (Select GoalId from VisitorConversions where VisitorId=@ExistingID)
+                                                     Update VisitorSegments set VisitorId=@ExistingID where VisitorId = @VisitorID and ExperimentId not in
+                                                         (Select ExperimentId from VisitorSegments where VisitorId=@ExistingID)
+                                                 End
+                                                 Select * from Visitors where Id = @ExistingID or (@ExistingID is null and UID=@UID)";
+
+        public const string GetVisitorAttributes = @"Select A.* from VisitorAttributes A 
+                                                     inner join Visitors B on A.VisitorId = B.Id where B.UID = @UID";
+
+        public const string GetVisitorLandingPages = @"Select A.* from VisitorLandingPages A 
+                                                       inner join Visitors B on A.VisitorId = B.Id where B.UID = @UID";
+
+        public const string GetVisitorReferrers = @"Select A.* from VisitorReferrers A 
+                                                    inner join Visitors B on A.VisitorId = B.Id where B.UID = @UID";
+
+        public const string GetVisitorCohorts = @"Select C.* from VisitorCohorts A 
+                                                  inner join Visitors B on A.VisitorId = B.Id 
+                                                  inner join Cohorts C on A.CohortID = C.Id where B.UID = @UID
+                                                  
+                                                  Select C.* from VisitorCohorts A 
+                                                  inner join Visitors B on A.VisitorId = B.Id 
+                                                  inner join CohortProperties C on C.CohortId = A.CohortId where B.UID = @UID";
+
+        public const string GetVisitorConversions = @"Select C.* from VisitorConversions A 
+                                                      inner join Visitors B on A.VisitorId = B.Id 
+                                                      inner join Goals C on A.GoalId = C.Id where B.UID = @UID";
+
+        public const string GetVisitorSegments = @"Select C.* from VisitorSegments A 
+                                                   inner join Visitors B on A.VisitorId = B.Id 
+                                                   inner join ExperimentSegments C on A.SegmentId = C.Id where B.UID = @UID
+
+                                                    Select ExperimentSegmentId, Name, Value from VisitorSegments A
+                                                    inner join Visitors B on A.VisitorId = B.Id 
+                                                    inner join ExperimentVariables C on A.ExperimentId = c.ExperimentId
+                                                    inner join ExperimentSegmentVariableValues D on A.SegmentId = D.ExperimentSegmentId 
+                                                    Where B.UID = @UID";
+
+
+        public const string AddVisitorAttribute = @"If not exists (Select 1 from VisitorAttributes where VisitorId=@VisitorId and Name=@Name)
+            Insert into VisitorAttributes (VisitorId, Name, Value) Values (@VisitorId, @Name, @Value)";
+
+        public const string AddVisitorCohort = @"If not exists (Select 1 from VisitorCohorts where VisitorId=@VisitorId and CohortId=@CohortId)
+           Insert into VisitorCohorts (VisitorId, CohortId) Values (@VisitorId, @CohortId)";
+        
+        public const string AddVisitorConversion = @"Insert into VisitorCoversions (VisitorId, GoalId) Values (@VisitorId, @GoalId)";
+        
+        public const string AddVisitorLandingPage = @"If not exists (Select 1 from VisitorLandingPages where VisitorId=@VisitorId and LandingPageUrl=@LandingPageUrl)
+            Insert into VisitorLandingPages (VisitorId, LandingPageUrl) values (@VisitorId, @LandingPageUrl)";
+
+        public const string AddVisitorReferrer = @"If not exists (Select 1 from VisitorReferrers where VisitorId=@VisitorId and ReferrerUrl=@ReferrerUrl)
+            Insert into VisitorReferrers (VisitorId, ReferrerUrl) values (@VisitorId, @ReferrerUrl)";
+
+        public const string AddVisitorRequest = @"Insert into VisitorRequests (VisitorId, RequestUrl) values (@VisitorId, @RequestUrl)";
+
+        public const string AddVisitorSegment = @"If not exists (Select 1 from VisitorSegments where VisitorId=@VisitorId and SegmentId=@SegmentId)
+            Insert into VisitorSegments (VisitorId, SegmentId, ExperimentId) values (@VisitorId, @SegmentId, @ExperimentId)";
+
     }
 }
