@@ -398,6 +398,17 @@ namespace Mtelligent.Data
             }
         }
 
+        public void RemoveVisitorAttribute(Visitor visitor, string name)
+        {
+            using (DbCommand cmd = _db.GetSqlStringCommand(MtelligentQueries.RemoveVisitorAttribute))
+            {
+                _db.AddInParameter(cmd, "@VisitorId", DbType.Int32, visitor.Id);
+                _db.AddInParameter(cmd, "@Name", DbType.String, name);
+
+                _db.ExecuteNonQuery(cmd);
+            }
+        }
+
         protected void AddCohorts(Visitor visitor)
         {
             foreach (var cohort in visitor.Request.Cohorts)

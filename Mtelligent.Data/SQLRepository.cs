@@ -307,6 +307,11 @@ namespace Mtelligent.Data
                 goal.SystemName = reader["SystemName"].ToString();
             }
 
+            if (reader["Value"] != DBNull.Value)
+            {
+                goal.Value = Convert.ToDouble(reader["Value"]);
+            }
+
             if (reader["GACode"] != DBNull.Value)
             {
                 goal.GACode = reader["GACode"].ToString();

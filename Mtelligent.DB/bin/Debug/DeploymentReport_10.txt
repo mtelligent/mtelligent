@@ -1,0 +1,22 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[Goals]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Drop
+       [dbo].[Visitors].[idx_Visitors_UID] (Index)
+       on [dbo].[Goals].[Active] (Default Constraint)
+     Table rebuild
+       [dbo].[Goals] (Table)
+
+** Supporting actions
+     Drop
+       [dbo].[FK_VisitorCohorts_ToGoals] (Foreign Key)
+     Create
+       [dbo].[FK_VisitorCohorts_ToGoals] (Foreign Key)

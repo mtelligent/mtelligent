@@ -59,6 +59,7 @@ namespace Mtelligent.Dashboard.Data
             {
                 _db.AddInParameter(cmd, "@Name", DbType.String, goal.Name);
                 _db.AddInParameter(cmd, "@SystemName", DbType.String, goal.SystemName);
+                _db.AddInParameter(cmd, "@Value", DbType.Double, goal.Value);
                 _db.AddInParameter(cmd, "@GACode", DbType.String, goal.GACode);
                 _db.AddInParameter(cmd, "@CustomJS", DbType.String, goal.CustomJS);
                 _db.AddInParameter(cmd, "@CreatedBy", DbType.String, goal.CreatedBy);
@@ -80,6 +81,7 @@ namespace Mtelligent.Dashboard.Data
             using (DbCommand cmd = _db.GetSqlStringCommand(GoalQueries.UpdateGoal))
             {
                 _db.AddInParameter(cmd, "@Name", DbType.String, goal.Name);
+                _db.AddInParameter(cmd, "@Value", DbType.Double, goal.Value);
                 _db.AddInParameter(cmd, "@GACode", DbType.String, goal.GACode);
                 _db.AddInParameter(cmd, "@CustomJS", DbType.String, goal.CustomJS);
                 _db.AddInParameter(cmd, "@UpdatedBy", DbType.String, goal.UpdatedBy);

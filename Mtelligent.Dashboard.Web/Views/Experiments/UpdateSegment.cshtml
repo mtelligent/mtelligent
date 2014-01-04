@@ -7,9 +7,9 @@
 <div class="content">
   <div class="row">
 
-    <h1>Update Segment for Experiment: [@Model.ExperimentName]</h1>
+    <h1>Update Hypothesis for Experiment: [@Model.ExperimentName]</h1>
 
-      <p class="lead">Enter details for your segment. You will be able to set the target percentage and select a default segment on the Edit Experiment page after you create the segment.</p>
+      <p class="lead">Edit details for your hypothesis. You will be able to set the target percentage and select a default segment on the Edit Experiment page after you create the hypothesis.</p>
 
       @using (Html.BeginForm("UpdateSegment", "Experiments", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "expForm" }))
       {
@@ -41,7 +41,7 @@
             
             <hr />
           
-            <h3>Segment Variables</h3>
+            <h3>Hypothesis Variables</h3>
           
             foreach (var variable in Model.Variables)
             {
@@ -57,7 +57,7 @@
             <hr />
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <div><button type="submit" class="btn btn-default">Update Segment</button></div>
+                    <div><button type="submit" class="btn btn-default">Update Hypothesis</button></div>
                 </div>
             </div>  
       }

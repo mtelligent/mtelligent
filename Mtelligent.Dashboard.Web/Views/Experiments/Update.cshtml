@@ -65,15 +65,15 @@
 
       <hr />
 
-      <h2>Experiment Segments</h2>
+      <h2>Hypotheses</h2>
 
-      <p class="lead">Segments are the different variations that will be presented to your users as part of this experiment. The Default Segment will be shown to users that are not in the target cohort.</p>
-      
+      <p class="lead">Hypotheses are proposed variations of an experiment. The Default Hypothesis will be shown to users that are not in the target cohort.</p>
+           
       <div class="alert alert-danger hide" id="clientSideErrors"></div>
 
     @if (Model.Experiment.Segments.Count == 0)
     {
-        <div class="alert alert-info">You currently have not configured any segments. Click "Add Segment" to add a segment to this experiment. </div>
+        <div class="alert alert-info">You currently have not configured any hypotheses. Click "Add Hypothesis" to add a hypothesis to this experiment. </div>
     }
     else
     {
@@ -105,7 +105,7 @@
 
         <div class="form-group">
             <div class="col-sm-10">
-                <div><button type="submit" class="btn btn-default">Save Segment Changes</button></div>
+                <div><button type="submit" class="btn btn-default">Save Hypotheses Changes</button></div>
             </div>
         </div>  
         <hr />
@@ -114,7 +114,7 @@
         
     }
 
-    <a href="/Experiments/AddSegment?Id=@Model.Experiment.Id" class="btn btn-primary btn-lg active" role="button">Add Segment</a>
+    <a href="/Experiments/AddSegment?Id=@Model.Experiment.Id" class="btn btn-primary btn-lg active" role="button">Add Hypothesis</a>
 @section Scripts {
       <script src="~/Scripts/knockout-3.0.0.js"></script>
       <script src="~/Scripts/Experiment.js" ></script>

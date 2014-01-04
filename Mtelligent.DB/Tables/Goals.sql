@@ -4,6 +4,7 @@
     [Name] NVARCHAR(100) NOT NULL, 
     [SystemName] NVARCHAR(100) NOT NULL, 
     [Active] INT NOT NULL DEFAULT 1, 
+	[Value] float default 0 NOT NULL,
     [GACode] NVARCHAR(20) NULL, 
     [CustomJS] NVARCHAR(MAX) NULL, 
     [CreatedBy] NVARCHAR(50) NOT NULL, 

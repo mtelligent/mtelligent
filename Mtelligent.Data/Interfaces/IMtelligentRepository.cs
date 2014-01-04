@@ -24,6 +24,8 @@ namespace Mtelligent.Data
         Goal GetGoal(string goalName);
 
         Visitor AddVisitor(Visitor visitor);
+
+        void RemoveVisitorAttribute(Visitor visitor, string name);
         
 	}
 }

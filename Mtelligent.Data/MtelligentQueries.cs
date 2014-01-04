@@ -9,14 +9,16 @@ namespace Mtelligent.Data
     public class MtelligentQueries
     {
         public const string GetExperiment = @"
-            Select @CohortId=TargetCohortId, @ExperimentId=Id from Experiments where SystemName = @SystemName
-            Select * from Experiments where Id = @ExperimentId
-            Select * from ExperimentSegments where ExperimentId = @ExperimentId
-            Select ExperimentSegmentId, Name, Value from ExperimentVariables A inner join ExperimentSegmentVariableValues B on A.Id = B.ExperimentVariableId Where A.ExperimentID = @ExperimentId
-            Select * from Cohorts Where Id = @CohortId
-            Select * from CohortProperties where CohortId = @CohortId";
+            Select @CohortId=TargetCohortId, @ExperimentId=Id from Experiments (nolock) where SystemName = @SystemName
+            Select * from Experiments (nolock) where Id = @ExperimentId
+            Select * from ExperimentSegments (nolock) where ExperimentId = @ExperimentId
+            Select ExperimentSegmentId, Name, Value from ExperimentVariables (nolock) A 
+                inner join ExperimentSegmentVariableValues (nolock) B on A.Id = B.ExperimentVariableId 
+                Where A.ExperimentID = @ExperimentId
+            Select * from Cohorts (nolock) Where Id = @CohortId
+            Select * from CohortProperties (nolock) where CohortId = @CohortId";
 
-        public const string GetGoal = @"Select * from Goals where SystemName = @GoalName";
+        public const string GetGoal = @"Select * from Goals (nolock) where SystemName = @GoalName";
 
         public const string AddVisitor = @"INSERT INTO[Visitors] ([UID],[FirstVisit],[UserName],[IsAuthenticated]) VALUES
                                            (@UID, @FirstVisit, @UserName, @IsAuthenticated) 
@@ -24,13 +26,13 @@ namespace Mtelligent.Data
 
         public const string UpdateVisitor = "Update Visitors set UserName=@UserName, IsAuthenticated=@IsAuthenticated Where UID = @UID";
 
-        public const string GetVisitor = @"Select * from Visitors where UID = @UID";
-        public const string GetVisitorFromUserName = @"Select * from Visitors where UserName = @UserName";
+        public const string GetVisitor = @"Select * from Visitors (nolock) where UID = @UID";
+        public const string GetVisitorFromUserName = @"Select * from Visitors (nolock) where UserName = @UserName";
 
-        public const string ReconcileVisitor = @"Select @ExistingID=ID from Visitors where UserName=@UserName
+        public const string ReconcileVisitor = @"Select @ExistingID=ID from Visitors (nolock) where UserName=@UserName
                                                  if (@ExistingID is not null)
                                                  Begin
-                                                     Select @VisitorID=ID from Visitors where UID=@UID
+                                                     Select @VisitorID=ID from Visitors (nolock) where UID=@UID
                                                      Update Visitors Set ReconcilledVisitorId = @ExistingID where ID=@VisitorID
                                                      Update VisitorReferrers set VisitorId=@ExistingID where VisitorId = @VisitorID
                                                      Update VisitorLandingPages set VisitorId=@ExistingID where VisitorId = @VisitorID
@@ -44,57 +46,59 @@ namespace Mtelligent.Data
                                                      Update VisitorSegments set VisitorId=@ExistingID where VisitorId = @VisitorID and ExperimentId not in
                                                          (Select ExperimentId from VisitorSegments where VisitorId=@ExistingID)
                                                  End
-                                                 Select * from Visitors where Id = @ExistingID or (@ExistingID is null and UID=@UID)";
+                                                 Select * from Visitors (nolock) where Id = @ExistingID or (@ExistingID is null and UID=@UID)";
 
-        public const string GetVisitorAttributes = @"Select A.* from VisitorAttributes A 
-                                                     inner join Visitors B on A.VisitorId = B.Id where B.UID = @UID";
+        public const string GetVisitorAttributes = @"Select A.* from VisitorAttributes (nolock) A 
+                                                     inner join Visitors (nolock) B on A.VisitorId = B.Id where B.UID = @UID";
 
-        public const string GetVisitorLandingPages = @"Select A.* from VisitorLandingPages A 
-                                                       inner join Visitors B on A.VisitorId = B.Id where B.UID = @UID";
+        public const string GetVisitorLandingPages = @"Select A.* from VisitorLandingPages (nolock) A 
+                                                       inner join Visitors (nolock) B on A.VisitorId = B.Id where B.UID = @UID";
 
-        public const string GetVisitorReferrers = @"Select A.* from VisitorReferrers A 
-                                                    inner join Visitors B on A.VisitorId = B.Id where B.UID = @UID";
+        public const string GetVisitorReferrers = @"Select A.* from VisitorReferrers (nolock) A 
+                                                    inner join Visitors (nolock) B on A.VisitorId = B.Id where B.UID = @UID";
 
-        public const string GetVisitorCohorts = @"Select C.* from VisitorCohorts A 
-                                                  inner join Visitors B on A.VisitorId = B.Id 
-                                                  inner join Cohorts C on A.CohortID = C.Id where B.UID = @UID
+        public const string GetVisitorCohorts = @"Select C.* from VisitorCohorts (nolock) A 
+                                                  inner join Visitors (nolock) B on A.VisitorId = B.Id 
+                                                  inner join Cohorts (nolock) C on A.CohortID = C.Id where B.UID = @UID
                                                   
-                                                  Select C.* from VisitorCohorts A 
-                                                  inner join Visitors B on A.VisitorId = B.Id 
-                                                  inner join CohortProperties C on C.CohortId = A.CohortId where B.UID = @UID";
+                                                  Select C.* from VisitorCohorts (nolock) A 
+                                                  inner join Visitors (nolock) B on A.VisitorId = B.Id 
+                                                  inner join CohortProperties (nolock) C on C.CohortId = A.CohortId where B.UID = @UID";
 
-        public const string GetVisitorConversions = @"Select C.* from VisitorConversions A 
-                                                      inner join Visitors B on A.VisitorId = B.Id 
-                                                      inner join Goals C on A.GoalId = C.Id where B.UID = @UID";
+        public const string GetVisitorConversions = @"Select C.* from VisitorConversions (nolock) A 
+                                                      inner join Visitors (nolock) B on A.VisitorId = B.Id 
+                                                      inner join Goals (nolock) C on A.GoalId = C.Id where B.UID = @UID";
 
-        public const string GetVisitorSegments = @"Select C.* from VisitorSegments A 
-                                                   inner join Visitors B on A.VisitorId = B.Id 
-                                                   inner join ExperimentSegments C on A.SegmentId = C.Id where B.UID = @UID
+        public const string GetVisitorSegments = @"Select C.* from VisitorSegments (nolock) A 
+                                                   inner join Visitors (nolock) B on A.VisitorId = B.Id 
+                                                   inner join ExperimentSegments (nolock) C on A.SegmentId = C.Id where B.UID = @UID
 
-                                                    Select ExperimentSegmentId, Name, Value from VisitorSegments A
-                                                    inner join Visitors B on A.VisitorId = B.Id 
-                                                    inner join ExperimentVariables C on A.ExperimentId = c.ExperimentId
-                                                    inner join ExperimentSegmentVariableValues D on A.SegmentId = D.ExperimentSegmentId 
+                                                    Select ExperimentSegmentId, Name, Value from VisitorSegments (nolock) A
+                                                    inner join Visitors (nolock) B on A.VisitorId = B.Id 
+                                                    inner join ExperimentVariables (nolock) C on A.ExperimentId = c.ExperimentId
+                                                    inner join ExperimentSegmentVariableValues (nolock) D on A.SegmentId = D.ExperimentSegmentId 
                                                     Where B.UID = @UID";
 
 
-        public const string AddVisitorAttribute = @"If not exists (Select 1 from VisitorAttributes where VisitorId=@VisitorId and Name=@Name)
+        public const string AddVisitorAttribute = @"If not exists (Select 1 from VisitorAttributes (nolock) where VisitorId=@VisitorId and Name=@Name)
             Insert into VisitorAttributes (VisitorId, Name, Value) Values (@VisitorId, @Name, @Value)";
 
-        public const string AddVisitorCohort = @"If not exists (Select 1 from VisitorCohorts where VisitorId=@VisitorId and CohortId=@CohortId)
+        public const string RemoveVisitorAttribute = @"Delete from VisitorAttributes where VisitorId=@VisitorId and Name=@Name";
+
+        public const string AddVisitorCohort = @"If not exists (Select 1 from VisitorCohorts (nolock) where VisitorId=@VisitorId and CohortId=@CohortId)
            Insert into VisitorCohorts (VisitorId, CohortId) Values (@VisitorId, @CohortId)";
         
         public const string AddVisitorConversion = @"Insert into VisitorCoversions (VisitorId, GoalId) Values (@VisitorId, @GoalId)";
-        
-        public const string AddVisitorLandingPage = @"If not exists (Select 1 from VisitorLandingPages where VisitorId=@VisitorId and LandingPageUrl=@LandingPageUrl)
+
+        public const string AddVisitorLandingPage = @"If not exists (Select 1 from VisitorLandingPages (nolock) where VisitorId=@VisitorId and LandingPageUrl=@LandingPageUrl)
             Insert into VisitorLandingPages (VisitorId, LandingPageUrl) values (@VisitorId, @LandingPageUrl)";
 
-        public const string AddVisitorReferrer = @"If not exists (Select 1 from VisitorReferrers where VisitorId=@VisitorId and ReferrerUrl=@ReferrerUrl)
+        public const string AddVisitorReferrer = @"If not exists (Select 1 from VisitorReferrers (nolock) where VisitorId=@VisitorId and ReferrerUrl=@ReferrerUrl)
             Insert into VisitorReferrers (VisitorId, ReferrerUrl) values (@VisitorId, @ReferrerUrl)";
 
         public const string AddVisitorRequest = @"Insert into VisitorRequests (VisitorId, RequestUrl) values (@VisitorId, @RequestUrl)";
 
-        public const string AddVisitorSegment = @"If not exists (Select 1 from VisitorSegments where VisitorId=@VisitorId and SegmentId=@SegmentId)
+        public const string AddVisitorSegment = @"If not exists (Select 1 from VisitorSegments (nolock) where VisitorId=@VisitorId and SegmentId=@SegmentId)
             Insert into VisitorSegments (VisitorId, SegmentId, ExperimentId) values (@VisitorId, @SegmentId, @ExperimentId)";
 
     }
