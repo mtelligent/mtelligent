@@ -29,5 +29,27 @@
           }
 
           <hr />
+          <h2>How it Works</h2>
+          <p>The code to produce the above result is pretty simple:</p>
+          <p><pre>
+&lt;h3 style=&quot;color:@@Html.GetHypothesisVariable(&quot;Honey vs Vinegar&quot;, &quot;TitleColor&quot;)&quot;&gt;@@Html.GetHypothesisVariable(&quot;Honey vs Vinegar&quot;, &quot;Title&quot;)&lt;/h3&gt;
+&lt;p class=&quot;lead&quot;&gt;@@Html.GetHypothesisVariable(&quot;Honey vs Vinegar&quot;, &quot;Copy&quot;)&lt;/p&gt;
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;@@Html.GetHypothesisVariable(&quot;Honey vs Vinegar&quot;, &quot;Image Source&quot;)&quot; /&gt;
+&lt;/p&gt;</pre></p>
+          <p>The framework automatically looks up the experiment, assigns a hypothesis and returns any variable your request. On the post, here is the code that registers the conversion and then changes the response method depending on which hypothosis you are associated with.</p>
+          <p><pre>
+ExperimentManager.Current.AddConversion("Honey vs Vinegar");
+
+if (ExperimentManager.Current.GetHypothesis("Honey vs Vinegar").SystemName == "Honey")
+{
+    ViewBag.Message = "Thanks you so much you wonderful user.";
+}
+else
+{
+    ViewBag.Message = "We knew you would do as you were told. Carry on worm.";
+}
+             </pre></p>
+
     </div>
 </div>
