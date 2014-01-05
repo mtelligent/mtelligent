@@ -14,11 +14,13 @@ namespace Mtelligent.Dashboard.Web.Controllers
     {
         private IExperimentRepository experimentRepository;
         private ICohortRepository cohortRepository;
+        private IGoalRepository goalRepository;
 
-        public ExperimentsController(IExperimentRepository experimentRepository, ICohortRepository cohortRepository)
+        public ExperimentsController(IExperimentRepository experimentRepository, ICohortRepository cohortRepository, IGoalRepository goalRepository)
         {
             this.experimentRepository = experimentRepository;
             this.cohortRepository = cohortRepository;
+            this.goalRepository = goalRepository;
         }
 
         //
@@ -35,6 +37,7 @@ namespace Mtelligent.Dashboard.Web.Controllers
             ExperimentViewModel viewModel = new ExperimentViewModel();
             viewModel.Experiment = null;
             viewModel.Cohorts = cohortRepository.GetAll().ToList();
+            viewModel.Goals = goalRepository.GetAll().ToList();
             return View(viewModel);
         }
 
@@ -43,6 +46,7 @@ namespace Mtelligent.Dashboard.Web.Controllers
             ExperimentViewModel viewModel = new ExperimentViewModel();
             viewModel.Experiment = experimentRepository.Get(Id);
             viewModel.Cohorts = cohortRepository.GetAll().ToList();
+            viewModel.Goals = goalRepository.GetAll().ToList();
             return View(viewModel);
         }
 

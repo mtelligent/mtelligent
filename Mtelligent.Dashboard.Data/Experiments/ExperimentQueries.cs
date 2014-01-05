@@ -16,7 +16,8 @@ namespace Mtelligent.Dashboard.Data
             Select * from ExperimentSegments (nolock) where ExperimentId = @ExperimentId; 
             Select * from ExperimentVariables (nolock) where ExperimentID = @ExperimentId; 
             Select ExperimentSegmentId, Name, Value from ExperimentVariables (nolock) A 
-            inner join ExperimentSegmentVariableValues (nolock) B on A.Id = B.ExperimentVariableId Where A.ExperimentID = @ExperimentId";
+            inner join ExperimentSegmentVariableValues (nolock) B on A.Id = B.ExperimentVariableId Where A.ExperimentID = @ExperimentId
+            Select * from ExperimentGoals (nolock) where ExperimentId = @ExperimentId";
         public const string AddExperiment =
                 @"Insert into Experiments (Name, SystemName, TargetCohortId, Created, CreatedBy) Values (@Name, @SystemName, @TargetCohortId, getDate(), @CreatedBy);
                 select * from Experiments (nolock) where Id = scope_Identity()";
@@ -34,5 +35,8 @@ namespace Mtelligent.Dashboard.Data
                 Insert into ExperimentSegmentVariableValues (ExperimentSegmentId, ExperimentVariableID, Value) Values (@ExperimentSegmentID, @ExperimentVariableID, @Value)";
 
         public const string DeleteExperimentSegmentVariableValues = @"Delete from ExperimentSegmentVAriableValues where ExperimentSegmentID = @ExperimentSegmentId";
+
+        public const string AddExperimentGoal = "Insert into ExperimentGoals (ExperimentId, GoalId) Values (@ExperimentId, @GoalId)";
+        public const string DeleteExperimentGoals = "Delete from ExperimentGoals where ExperimentId = @ExperimentId";
     }
 }

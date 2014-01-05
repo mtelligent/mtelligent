@@ -50,6 +50,12 @@
     <Compile Include="Cohorts\CohortQueries.cs" />
     <Compile Include="Cohorts\CohortRepository.cs" />
     <Compile Include="Cohorts\ICohortRepository.cs" />
+    <Compile Include="Dashboard\DashboardQueries.cs" />
+    <Compile Include="Dashboard\DashboardRepository.cs" />
+    <Compile Include="Dashboard\Entities\ExperimentSummary.cs" />
+    <Compile Include="Dashboard\Entities\GoalSummary.cs" />
+    <Compile Include="Dashboard\Entities\HypothesisSummary.cs" />
+    <Compile Include="Dashboard\IDashboardRepository.cs" />
     <Compile Include="Experiments\ExperimentQueries.cs" />
     <Compile Include="Experiments\ExperimentRepository.cs" />
     <Compile Include="Experiments\IExperimentRepository.cs" />

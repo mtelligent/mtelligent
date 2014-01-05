@@ -133,7 +133,7 @@ namespace Mtelligent.Dashboard.Data
             return cohort;
         }
 
-        public void Delete(Entities.Cohort cohort)
+        public void Delete(Cohort cohort)
         {
             using (DbCommand cmd = _db.GetSqlStringCommand(CohortQueries.DeleteCohort))
             {

@@ -686,6 +686,25 @@
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="39" />
 		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[ExperimentGoals].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[ExperimentGoals]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="40" />
+		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[dbo].[CK_Cohorts_SystemName]">
 			<Relationship Name="ColumnSpecifications">
 				<Entry>
@@ -703,7 +722,7 @@
 					<References Name="[dbo].[Cohorts]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="40" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="41" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[dbo].[CK_Experiments_SystemName_unique]">
 			<Relationship Name="ColumnSpecifications">
@@ -722,7 +741,7 @@
 					<References Name="[dbo].[Experiments]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="41" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="42" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[dbo].[CK_ExperimentSegments_SystemName_unique]">
 			<Relationship Name="ColumnSpecifications">
@@ -741,7 +760,7 @@
 					<References Name="[dbo].[ExperimentSegments]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="42" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="43" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[dbo].[CK_ExperimentVariables_Name]">
 			<Relationship Name="ColumnSpecifications">
@@ -769,7 +788,7 @@
 					<References Name="[dbo].[ExperimentVariables]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="43" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="44" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[dbo].[CK_Goals_SystemName_unique]">
 			<Relationship Name="ColumnSpecifications">
@@ -788,7 +807,7 @@
 					<References Name="[dbo].[Goals]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="44" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="45" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[dbo].[CK_Sites_NameUnique]">
 			<Relationship Name="ColumnSpecifications">
@@ -807,7 +826,7 @@
 					<References Name="[dbo].[Sites]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="45" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="46" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[dbo].[CK_SiteUrls_Url_Unique]">
 			<Relationship Name="ColumnSpecifications">
@@ -826,7 +845,7 @@
 					<References Name="[dbo].[SiteUrls]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="46" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="47" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[CohortProperties]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -905,7 +924,7 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="47" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="48" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Cohorts]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1083,7 +1102,69 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="40" />
+			<AttachedAnnotation Disambiguator="41" />
+		</Element>
+		<Element Type="SqlTable" Name="[dbo].[ExperimentGoals]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[ExperimentGoals].[Id]">
+						<Property Name="IsNullable" Value="False" />
+						<Property Name="IsIdentity" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="40" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[ExperimentGoals].[ExperimentId]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[ExperimentGoals].[GoalId]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="49" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="50" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Experiments]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1260,8 +1341,8 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="41" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="48" />
+			<AttachedAnnotation Disambiguator="42" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="51" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[ExperimentSegments]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1456,8 +1537,8 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="42" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="49" />
+			<AttachedAnnotation Disambiguator="43" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="52" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[ExperimentSegmentVariableValues]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1536,8 +1617,8 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="50" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="51" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="53" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="54" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[ExperimentVariables]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1599,8 +1680,8 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="43" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="52" />
+			<AttachedAnnotation Disambiguator="44" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="55" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_CohortProperties_ToCohort]">
 			<Relationship Name="Columns">
@@ -1623,7 +1704,53 @@
 					<References Name="[dbo].[Cohorts]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="47" />
+			<AttachedAnnotation Disambiguator="48" />
+		</Element>
+		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_ExperimentGoals_ToExperiments]">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[ExperimentGoals].[ExperimentId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[ExperimentGoals]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[Experiments].[Id]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[Experiments]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="49" />
+		</Element>
+		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_ExperimentGoals_ToGoals]">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[ExperimentGoals].[GoalId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[ExperimentGoals]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[Goals].[Id]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[Goals]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="50" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Experiments_ToCohorts]">
 			<Relationship Name="Columns">
@@ -1646,7 +1773,7 @@
 					<References Name="[dbo].[Cohorts]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="48" />
+			<AttachedAnnotation Disambiguator="51" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_ExperimentSegments_ToExperiments]">
 			<Relationship Name="Columns">
@@ -1669,7 +1796,7 @@
 					<References Name="[dbo].[Experiments]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="49" />
+			<AttachedAnnotation Disambiguator="52" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_ExperimentSegmentVariableValues_ToExperimentSegments]">
 			<Relationship Name="Columns">
@@ -1692,7 +1819,7 @@
 					<References Name="[dbo].[ExperimentSegments]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="50" />
+			<AttachedAnnotation Disambiguator="53" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_ExperimentSegmentVariableValues_ToExperimentVariables]">
 			<Relationship Name="Columns">
@@ -1715,7 +1842,7 @@
 					<References Name="[dbo].[ExperimentVariables]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="51" />
+			<AttachedAnnotation Disambiguator="54" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_ExperimentVariables_ToExperiments]">
 			<Relationship Name="Columns">
@@ -1738,7 +1865,7 @@
 					<References Name="[dbo].[Experiments]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="52" />
+			<AttachedAnnotation Disambiguator="55" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_SiteUrls_ToSites]">
 			<Relationship Name="Columns">
@@ -1761,7 +1888,7 @@
 					<References Name="[dbo].[Sites]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="53" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="56" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_VisitorAttributes_ToVisitors]">
 			<Relationship Name="Columns">
@@ -1784,7 +1911,7 @@
 					<References Name="[dbo].[Visitors]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="54" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="57" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_VisitorCohorts_ToCohorts]">
 			<Relationship Name="Columns">
@@ -1807,7 +1934,7 @@
 					<References Name="[dbo].[Cohorts]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="55" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="58" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_VisitorCohorts_ToGoals]">
 			<Relationship Name="Columns">
@@ -1830,7 +1957,7 @@
 					<References Name="[dbo].[Goals]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="56" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="59" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_VisitorCohorts_ToVisitors]">
 			<Relationship Name="Columns">
@@ -1853,7 +1980,7 @@
 					<References Name="[dbo].[Visitors]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="57" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="60" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_VisitorConversions_ToVisitors]">
 			<Relationship Name="Columns">
@@ -1876,7 +2003,7 @@
 					<References Name="[dbo].[Visitors]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="58" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="61" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_VisitorLandingPages_ToVisitors]">
 			<Relationship Name="Columns">
@@ -1899,7 +2026,7 @@
 					<References Name="[dbo].[Visitors]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="59" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="62" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_VisitorReferrers_ToVisitors]">
 			<Relationship Name="Columns">
@@ -1922,7 +2049,7 @@
 					<References Name="[dbo].[Visitors]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="60" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="63" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_VisitorRequests_ToVisitors]">
 			<Relationship Name="Columns">
@@ -1945,7 +2072,7 @@
 					<References Name="[dbo].[Visitors]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="61" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="64" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_VisitorSegments_ToExperiments]">
 			<Relationship Name="Columns">
@@ -1968,7 +2095,7 @@
 					<References Name="[dbo].[Experiments]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="62" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="65" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_VisitorSegments_ToExperimentSegments]">
 			<Relationship Name="Columns">
@@ -1991,7 +2118,7 @@
 					<References Name="[dbo].[ExperimentSegments]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="63" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="66" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_VisitorSegments_ToVisitors]">
 			<Relationship Name="Columns">
@@ -2014,7 +2141,7 @@
 					<References Name="[dbo].[Visitors]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="64" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="67" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Goals]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -2208,7 +2335,7 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="44" />
+			<AttachedAnnotation Disambiguator="45" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Sites]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -2335,7 +2462,7 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="45" />
+			<AttachedAnnotation Disambiguator="46" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[SiteUrls]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -2478,8 +2605,8 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="53" />
-			<AttachedAnnotation Disambiguator="46" />
+			<AttachedAnnotation Disambiguator="56" />
+			<AttachedAnnotation Disambiguator="47" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[VisitorAttributes]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -2591,7 +2718,7 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="54" />
+			<AttachedAnnotation Disambiguator="57" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[VisitorCohorts]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -2685,8 +2812,8 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="57" />
-			<AttachedAnnotation Disambiguator="55" />
+			<AttachedAnnotation Disambiguator="60" />
+			<AttachedAnnotation Disambiguator="58" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[VisitorConversions]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -2780,8 +2907,8 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="58" />
-			<AttachedAnnotation Disambiguator="56" />
+			<AttachedAnnotation Disambiguator="61" />
+			<AttachedAnnotation Disambiguator="59" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[VisitorLandingPages]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -2876,7 +3003,7 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="59" />
+			<AttachedAnnotation Disambiguator="62" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[VisitorReferrers]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -2971,7 +3098,7 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="60" />
+			<AttachedAnnotation Disambiguator="63" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[VisitorRequests]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -3066,7 +3193,7 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="61" />
+			<AttachedAnnotation Disambiguator="64" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Visitors]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -3315,9 +3442,9 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="64" />
-			<AttachedAnnotation Disambiguator="63" />
-			<AttachedAnnotation Disambiguator="62" />
+			<AttachedAnnotation Disambiguator="67" />
+			<AttachedAnnotation Disambiguator="66" />
+			<AttachedAnnotation Disambiguator="65" />
 		</Element>
 	</Model>
 </DataSchemaModel>

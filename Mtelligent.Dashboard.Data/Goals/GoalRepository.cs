@@ -53,7 +53,7 @@ namespace Mtelligent.Dashboard.Data
             return null;         
         }
 
-        public Entities.Goal Add(Entities.Goal goal)
+        public Goal Add(Goal goal)
         {
             using (DbCommand cmd = _db.GetSqlStringCommand(GoalQueries.AddGoal))
             {
@@ -76,7 +76,7 @@ namespace Mtelligent.Dashboard.Data
             return goal;
         }
 
-        public Entities.Goal Update(Entities.Goal goal)
+        public Goal Update(Goal goal)
         {
             using (DbCommand cmd = _db.GetSqlStringCommand(GoalQueries.UpdateGoal))
             {
@@ -93,7 +93,7 @@ namespace Mtelligent.Dashboard.Data
             return goal;
         }
 
-        public void Delete(Entities.Goal goal)
+        public void Delete(Goal goal)
         {
             using (DbCommand cmd = _db.GetSqlStringCommand(GoalQueries.DeleteGoal))
             {

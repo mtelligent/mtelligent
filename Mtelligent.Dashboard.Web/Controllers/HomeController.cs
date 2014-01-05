@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mtelligent.Dashboard.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,11 +10,17 @@ namespace Mtelligent.Dashboard.Web.Controllers
     [Authorize]
     public class HomeController : Controller
     {
+        private IDashboardRepository dashboardRepository = null;
+
+        public HomeController(IDashboardRepository dashboardRepository)
+        {
+            this.dashboardRepository = dashboardRepository;
+        }
+
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
-            return View();
+            var summary = dashboardRepository.GetExperimentStatuses();
+            return View(summary);
         }
 
         public ActionResult About()

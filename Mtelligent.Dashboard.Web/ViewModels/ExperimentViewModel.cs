@@ -10,5 +10,6 @@ namespace Mtelligent.Dashboard.Web.ViewModels
     {
         public Experiment Experiment { get; set; }
         public List<Cohort> Cohorts { get; set; }
+        public List<Goal> Goals { get; set; }
     }
 }

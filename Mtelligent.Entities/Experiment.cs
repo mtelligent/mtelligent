@@ -8,7 +8,7 @@ namespace Mtelligent.Entities
 	{
 		public Experiment ()
 		{
-			
+            GoalIds = new List<int>();
 		}
 
 		public int Id { get; set; }
@@ -34,6 +34,9 @@ namespace Mtelligent.Entities
         public List<string> Variables { get; set; }
 
         public int SegmentCount { get; set; }
+
+        [Display(Name = "Goals")]
+        public List<int> GoalIds { get; set; }
 
         
 	}

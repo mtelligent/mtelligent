@@ -1,0 +1,17 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[ExperimentGoals] (Table)
+       [dbo].[FK_ExperimentGoals_ToExperiments] (Foreign Key)
+       [dbo].[FK_ExperimentGoals_ToGoals] (Foreign Key)
+
+** Supporting actions

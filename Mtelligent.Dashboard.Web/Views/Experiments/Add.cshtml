@@ -42,6 +42,14 @@
             </div>
             </div>
           
+            <div class="form-group">
+            @Html.LabelFor(m => m.Experiment.GoalIds, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                    @Html.ListBoxFor(m => m.Experiment.GoalIds, new SelectList(Model.Goals, "Id", "Name"), new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Experiment.GoalIds)
+            </div>
+            </div>
+          
             <div data-bind="foreach: variables">
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="variable-1" data-bind="text: $index() == 0 ? 'Variables' : ''"></label>

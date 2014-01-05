@@ -58,6 +58,7 @@ namespace Mtelligent.Dashboard.Web.App_Start
             kernel.Bind<ISiteRepository>().To<SiteRepository>();
             kernel.Bind<ICohortRepository>().To<CohortRepository>();
             kernel.Bind<IExperimentRepository>().To<ExperimentRepository>();
+            kernel.Bind<IDashboardRepository>().To<DashboardRepository>();
 
         }        
     }

@@ -72,6 +72,14 @@ namespace Mtelligent.Dashboard.Data
                     {
                         AddVariableToSegment(experiment, reader);
                     }
+
+                    reader.NextResult();
+
+                    while (reader.Read())
+                    {
+                        int goalID = Convert.ToInt32(reader["GoalId"]);
+                        experiment.GoalIds.Add(goalID);
+                    }
                 }
             }
 
@@ -113,6 +121,19 @@ namespace Mtelligent.Dashboard.Data
                 }
             }
 
+            foreach (int goalId in experiment.GoalIds)
+            {
+                using (DbCommand cmd = _db.GetSqlStringCommand(ExperimentQueries.AddExperimentGoal))
+                {
+                    _db.AddInParameter(cmd, "@ExperimentId", DbType.Int32, rtnExperiment.Id);
+                    _db.AddInParameter(cmd, "@GoalId", DbType.Int32, goalId);
+
+                    rtnExperiment.GoalIds.Add(goalId);
+
+                    _db.ExecuteNonQuery(cmd);
+                }
+            }
+
             return rtnExperiment;
         }
 
@@ -148,6 +169,24 @@ namespace Mtelligent.Dashboard.Data
                 }
             }
 
+            //delete any existing goals
+            using (DbCommand cmd = _db.GetSqlStringCommand(ExperimentQueries.DeleteExperimentGoals))
+            {
+                _db.AddInParameter(cmd, "@ExperimentId", DbType.Int32, experiment.Id);
+                _db.ExecuteNonQuery(cmd);
+            }
+
+            //add back goals
+            foreach (int goalId in experiment.GoalIds)
+            {
+                using (DbCommand cmd = _db.GetSqlStringCommand(ExperimentQueries.AddExperimentGoal))
+                {
+                    _db.AddInParameter(cmd, "@ExperimentId", DbType.Int32, experiment.Id);
+                    _db.AddInParameter(cmd, "@GoalId", DbType.Int32, goalId);
+
+                    _db.ExecuteNonQuery(cmd);
+                }
+            }
 
             
 

@@ -18,5 +18,6 @@ namespace Mtelligent.Dashboard.Data
         ExperimentSegment AddSegment(ExperimentSegment segment);
         ExperimentSegment UpdateSegment(ExperimentSegment segment);
 
+        
     }
 }
