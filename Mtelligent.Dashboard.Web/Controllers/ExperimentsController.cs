@@ -15,10 +15,10 @@ namespace Mtelligent.Dashboard.Web.Controllers
         private IExperimentRepository experimentRepository;
         private ICohortRepository cohortRepository;
 
-        public ExperimentsController()
+        public ExperimentsController(IExperimentRepository experimentRepository, ICohortRepository cohortRepository)
         {
-            this.experimentRepository = new ExperimentRepository();
-            this.cohortRepository = new CohortRepository();
+            this.experimentRepository = experimentRepository;
+            this.cohortRepository = cohortRepository;
         }
 
         //

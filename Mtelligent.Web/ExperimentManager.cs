@@ -83,21 +83,32 @@ namespace Mtelligent.Web
 
             validateAndLoadVisitor();
 
+            return GetHypothesis(experiment, CurrentVisitor);
+        }
+
+        /// <summary>
+        /// Mostly for testing, allows you to specify experiment and visitor properties.
+        /// </summary>
+        /// <param name="experiment"></param>
+        /// <param name="visitor"></param>
+        /// <returns></returns>
+        public ExperimentSegment GetHypothesis(Experiment experiment, Visitor visitor)
+        {
             //See if user has current segments loaded.
-            if (!CurrentVisitor.IsNew && !CurrentVisitor.ExperimentSegmentsLoaded)
+            if (!visitor.IsNew && !visitor.ExperimentSegmentsLoaded)
             {
-                CurrentVisitor = _visitProvider.GetSegments(CurrentVisitor);
-                CurrentVisitor.ExperimentSegmentsLoaded = true;
+                visitor = _visitProvider.GetSegments(visitor);
+                visitor.ExperimentSegmentsLoaded = true;
             }
 
-            var existingSegment = CurrentVisitor.ExperimentSegments.FirstOrDefault(a => a.ExperimentId == experiment.Id);
+            var existingSegment = visitor.ExperimentSegments.FirstOrDefault(a => a.ExperimentId == experiment.Id);
             if (existingSegment != null)
             {
                 return existingSegment;
             }
 
             //check if user is in cohort.
-            if (userIsInCohort(experiment.TargetCohort))
+            if (userIsInCohort(visitor, experiment.TargetCohort))
             {
                 //Randomly select a segment
                 int randNum = _random.Next(1, 100);
@@ -108,7 +119,8 @@ namespace Mtelligent.Web
                     {
                         if (counter + segment.TargetPercentage >= randNum)
                         {
-                            CurrentVisitor.Request.ExperimentSegments.Add(segment);
+                            visitor.Request.ExperimentSegments.Add(segment);
+                            visitor.ExperimentSegments.Add(segment);
                             return segment;
                         }
                         counter += segment.TargetPercentage;
@@ -253,17 +265,17 @@ namespace Mtelligent.Web
             return experiments[experimentName];
         }
 
-        private bool userIsInCohort(Cohort cohort)
+        private bool userIsInCohort(Visitor visitor, Cohort cohort)
         {
-            loadCohortPrerequisites(cohort);
-            if (CurrentVisitor.Cohorts.FirstOrDefault(a=>a.SystemName == cohort.SystemName) != null)
+            loadCohortPrerequisites(visitor, cohort);
+            if (visitor.Cohorts.FirstOrDefault(a=>a.SystemName == cohort.SystemName) != null)
             {
                 return true;    
             }
-            if (cohort.IsInCohort(CurrentVisitor))
+            if (cohort.IsInCohort(visitor))
             {
-                CurrentVisitor.Request.Cohorts.Add(cohort);
-                CurrentVisitor.Cohorts.Add(cohort);
+                visitor.Request.Cohorts.Add(cohort);
+                visitor.Cohorts.Add(cohort);
                 return true;
             }
             return false;
@@ -334,48 +346,48 @@ namespace Mtelligent.Web
                 }
         }
 
-        private void loadCohortPrerequisites(Cohort cohort)
+        private void loadCohortPrerequisites(Visitor visitor, Cohort cohort)
         {
             //New Visitors don't have anything else
-            if (!CurrentVisitor.IsNew)
+            if (!visitor.IsNew)
             {
-                if (!CurrentVisitor.CohortsLoaded)
+                if (!visitor.CohortsLoaded)
                 {
-                    CurrentVisitor = _visitProvider.GetCohorts(CurrentVisitor);
+                    CurrentVisitor = _visitProvider.GetCohorts(visitor);
 
                     //short circuit if user is in cohort already.
-                    if (CurrentVisitor.Cohorts.FirstOrDefault(a => a.SystemName == cohort.SystemName) != null)
+                    if (visitor.Cohorts.FirstOrDefault(a => a.SystemName == cohort.SystemName) != null)
                     {
                         return;
                     }
                 }
 
-                if (cohort.RequiresAttributes && !CurrentVisitor.AttributesLoaded)
+                if (cohort.RequiresAttributes && !visitor.AttributesLoaded)
                 {
-                    CurrentVisitor = _visitProvider.GetAttributes(CurrentVisitor);
-                    CurrentVisitor.AttributesLoaded = true;
+                    visitor = _visitProvider.GetAttributes(visitor);
+                    visitor.AttributesLoaded = true;
                 }
 
-                if (cohort.RequiresLandingUrls && !CurrentVisitor.LandingUrlsLoaded)
+                if (cohort.RequiresLandingUrls && !visitor.LandingUrlsLoaded)
                 {
-                    CurrentVisitor = _visitProvider.GetLandingPages(CurrentVisitor);
-                    CurrentVisitor.LandingUrlsLoaded = true;
+                    visitor = _visitProvider.GetLandingPages(visitor);
+                    visitor.LandingUrlsLoaded = true;
                 }
 
-                if (cohort.RequiresLandingUrls && !string.IsNullOrEmpty(CurrentVisitor.Request.LandingUrl))
+                if (cohort.RequiresLandingUrls && !string.IsNullOrEmpty(visitor.Request.LandingUrl))
                 {
-                    CurrentVisitor.LandingUrls.Add(CurrentVisitor.Request.LandingUrl);
+                    visitor.LandingUrls.Add(visitor.Request.LandingUrl);
                 }
 
-                if (cohort.RequiresReferrers && !CurrentVisitor.ReferrersLoaded)
+                if (cohort.RequiresReferrers && !visitor.ReferrersLoaded)
                 {
-                    CurrentVisitor = _visitProvider.GetReferrers(CurrentVisitor);
-                    CurrentVisitor.ReferrersLoaded = true;
+                    visitor = _visitProvider.GetReferrers(visitor);
+                    visitor.ReferrersLoaded = true;
                 }
 
-                if (cohort.RequiresReferrers && !string.IsNullOrEmpty(CurrentVisitor.Request.FilteredReferrer))
+                if (cohort.RequiresReferrers && !string.IsNullOrEmpty(visitor.Request.FilteredReferrer))
                 {
-                    CurrentVisitor.Referrers.Add(CurrentVisitor.Request.FilteredReferrer);
+                    visitor.Referrers.Add(visitor.Request.FilteredReferrer);
                 }
 
 

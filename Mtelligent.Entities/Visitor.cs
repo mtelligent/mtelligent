@@ -77,6 +77,15 @@ namespace Mtelligent.Entities
 
     public class VisitorRequest
     {
+        public VisitorRequest()
+        {
+            Attributes = new Dictionary<string, string>();
+            Conversions = new List<Goal>();
+            Cohorts = new List<Cohort>();
+            ExperimentSegments = new List<ExperimentSegment>();
+
+        }
+
         public string RequestUrl { get; set; }
         public string ReferrerUrl { get; set; }
         public Dictionary<string, string> Attributes { get; set; }

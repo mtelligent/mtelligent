@@ -1,0 +1,33 @@
+﻿@using Mtelligent.Web
+
+@{
+    ViewBag.Title = "Index";
+    string message = ViewBag.Message;
+    
+}
+
+<div class="content">
+      <div class="row">
+          <h1>About</h1>
+
+          <p class="lead">The section below is an experiment in action. Just by visiting you are automatically assigned a hypothesis and the text below will look and read differently depending on which hypothesis you were selected to receive. Click the button, or don't click the button. In the end the Mtelligent framework will tell you which text is more effective at getting your users to click the button.</p>
+          <hr />
+          @if (!string.IsNullOrEmpty(message))
+          {
+              <div class="alert alert-info">@message</div>
+          }
+          <h3 style="color:@Html.GetHypothesisVariable("Honey vs Vinegar", "TitleColor")">@Html.GetHypothesisVariable("Honey vs Vinegar", "Title")</h3>
+
+          <p class="lead">@Html.GetHypothesisVariable("Honey vs Vinegar", "Copy")</p>
+          <p align="center">
+          <img src="@Html.GetHypothesisVariable("Honey vs Vinegar", "Image Source")" />
+          </p>
+          @using (Html.BeginForm())
+          {
+            <input type="hidden" name="post" value="post" />
+            <button type="submit" class="btn btn-primary btn-lg active" role="button">Click Me</button>
+          }
+
+          <hr />
+    </div>
+</div>

@@ -496,6 +496,9 @@ namespace Mtelligent.Data
             {
                 _db.AddInParameter(cmd, "@SystemName", DbType.String, experimentName);
 
+                _db.AddOutParameter(cmd, "@CohortId", DbType.Int32, 8);
+                _db.AddOutParameter(cmd, "@ExperimentId", DbType.Int32, 8);
+
                 using (IDataReader reader = _db.ExecuteReader(cmd))
                 {
                     while (reader.Read())
@@ -543,7 +546,7 @@ namespace Mtelligent.Data
         {
             using (DbCommand cmd = _db.GetSqlStringCommand(MtelligentQueries.GetGoal))
             {
-                _db.AddInParameter(cmd, "@SystemName", DbType.String, goalName);
+                _db.AddInParameter(cmd, "@GoalName", DbType.String, goalName);
 
                 using (IDataReader reader = _db.ExecuteReader(cmd))
                 {

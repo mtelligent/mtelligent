@@ -76,7 +76,7 @@ namespace Mtelligent.Data
                                                     Select ExperimentSegmentId, Name, Value from VisitorSegments (nolock) A
                                                     inner join Visitors (nolock) B on A.VisitorId = B.Id 
                                                     inner join ExperimentVariables (nolock) C on A.ExperimentId = c.ExperimentId
-                                                    inner join ExperimentSegmentVariableValues (nolock) D on A.SegmentId = D.ExperimentSegmentId 
+                                                    inner join ExperimentSegmentVariableValues (nolock) D on A.SegmentId = D.ExperimentSegmentId and C.Id = ExperimentVariableId
                                                     Where B.UID = @UID";
 
 
@@ -88,7 +88,7 @@ namespace Mtelligent.Data
         public const string AddVisitorCohort = @"If not exists (Select 1 from VisitorCohorts (nolock) where VisitorId=@VisitorId and CohortId=@CohortId)
            Insert into VisitorCohorts (VisitorId, CohortId) Values (@VisitorId, @CohortId)";
         
-        public const string AddVisitorConversion = @"Insert into VisitorCoversions (VisitorId, GoalId) Values (@VisitorId, @GoalId)";
+        public const string AddVisitorConversion = @"Insert into VisitorConversions (VisitorId, GoalId) Values (@VisitorId, @GoalId)";
 
         public const string AddVisitorLandingPage = @"If not exists (Select 1 from VisitorLandingPages (nolock) where VisitorId=@VisitorId and LandingPageUrl=@LandingPageUrl)
             Insert into VisitorLandingPages (VisitorId, LandingPageUrl) values (@VisitorId, @LandingPageUrl)";

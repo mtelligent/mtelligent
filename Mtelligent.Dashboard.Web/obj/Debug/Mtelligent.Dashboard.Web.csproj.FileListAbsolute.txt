@@ -103,3 +103,13 @@ C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\zh-Hant\System.Spatial.resou
 C:\projects\Mtelligent\Mtelligent.Dashboard.Web\obj\Debug\Mtelligent.Dashboard.Web.csprojResolveAssemblyReference.cache
 C:\projects\Mtelligent\Mtelligent.Dashboard.Web\obj\Debug\Mtelligent.Dashboard.Web.dll
 C:\projects\Mtelligent\Mtelligent.Dashboard.Web\obj\Debug\Mtelligent.Dashboard.Web.pdb
+C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Ninject.dll
+C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Ninject.Web.Common.dll
+C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Ninject.Web.Mvc.dll
+C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\WebActivator.dll
+C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Ninject.pdb
+C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Ninject.xml
+C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Ninject.Web.Common.pdb
+C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Ninject.Web.Common.xml
+C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Ninject.Web.Mvc.pdb
+C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Ninject.Web.Mvc.xml
