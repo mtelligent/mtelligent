@@ -68,20 +68,16 @@
     <Compile Include="Sites\SiteRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Mtelligent.Data\Mtelligent.Data.csproj">
-      <Project>{42e0de4a-365f-4b1f-ab68-d633bb90cef5}</Project>
-      <Name>Mtelligent.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Mtelligent.Entities\Mtelligent.Entities.csproj">
-      <Project>{ad1cc393-bed9-47c7-8090-3ac8d68228c9}</Project>
-      <Name>Mtelligent.Entities</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Constants\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mtelligent\Mtelligent.csproj">
+      <Project>{73213fc3-5a59-4986-aeff-613abca274ce}</Project>
+      <Name>Mtelligent</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -2,14 +2,10 @@ C:\projects\Mtelligent\Mtelligent.Dashboard.Data\bin\Debug\Mtelligent.Dashboard.
 C:\projects\Mtelligent\Mtelligent.Dashboard.Data\bin\Debug\Mtelligent.Dashboard.Data.pdb
 C:\projects\Mtelligent\Mtelligent.Dashboard.Data\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
 C:\projects\Mtelligent\Mtelligent.Dashboard.Data\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
-C:\projects\Mtelligent\Mtelligent.Dashboard.Data\bin\Debug\Mtelligent.Data.dll
-C:\projects\Mtelligent\Mtelligent.Dashboard.Data\bin\Debug\Mtelligent.Entities.dll
-C:\projects\Mtelligent\Mtelligent.Dashboard.Data\bin\Debug\Mtelligent.Configuration.dll
-C:\projects\Mtelligent\Mtelligent.Dashboard.Data\bin\Debug\Mtelligent.Data.pdb
-C:\projects\Mtelligent\Mtelligent.Dashboard.Data\bin\Debug\Mtelligent.Entities.pdb
 C:\projects\Mtelligent\Mtelligent.Dashboard.Data\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
 C:\projects\Mtelligent\Mtelligent.Dashboard.Data\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
-C:\projects\Mtelligent\Mtelligent.Dashboard.Data\bin\Debug\Mtelligent.Configuration.pdb
 C:\projects\Mtelligent\Mtelligent.Dashboard.Data\obj\Debug\Mtelligent.Dashboard.Data.csprojResolveAssemblyReference.cache
 C:\projects\Mtelligent\Mtelligent.Dashboard.Data\obj\Debug\Mtelligent.Dashboard.Data.dll
 C:\projects\Mtelligent\Mtelligent.Dashboard.Data\obj\Debug\Mtelligent.Dashboard.Data.pdb
+C:\projects\Mtelligent\Mtelligent.Dashboard.Data\bin\Debug\Mtelligent.dll
+C:\projects\Mtelligent\Mtelligent.Dashboard.Data\bin\Debug\Mtelligent.pdb

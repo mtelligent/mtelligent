@@ -404,25 +404,13 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Mtelligent.Configuration\Mtelligent.Configuration.csproj">
-      <Project>{2d3c4a42-6d37-4346-8cbe-eb7758d064fe}</Project>
-      <Name>Mtelligent.Configuration</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Mtelligent.Dashboard.Data\Mtelligent.Dashboard.Data.csproj">
       <Project>{ede4aa56-a56e-456a-980b-bf7a413f553f}</Project>
       <Name>Mtelligent.Dashboard.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Mtelligent.Data\Mtelligent.Data.csproj">
-      <Project>{42e0de4a-365f-4b1f-ab68-d633bb90cef5}</Project>
-      <Name>Mtelligent.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Mtelligent.Entities\Mtelligent.Entities.csproj">
-      <Project>{ad1cc393-bed9-47c7-8090-3ac8d68228c9}</Project>
-      <Name>Mtelligent.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Mtelligent.Web\Mtelligent.Web.csproj">
-      <Project>{ae21733a-878e-4d2e-a9ca-4ef18bdb592a}</Project>
-      <Name>Mtelligent.Web</Name>
+    <ProjectReference Include="..\Mtelligent\Mtelligent.csproj">
+      <Project>{73213fc3-5a59-4986-aeff-613abca274ce}</Project>
+      <Name>Mtelligent</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -1,5 +1,0 @@
-C:\projects\Mtelligent\Mtelligent.Configuration\bin\Debug\Mtelligent.Configuration.dll
-C:\projects\Mtelligent\Mtelligent.Configuration\bin\Debug\Mtelligent.Configuration.pdb
-C:\projects\Mtelligent\Mtelligent.Configuration\obj\Debug\Mtelligent.Configuration.csprojResolveAssemblyReference.cache
-C:\projects\Mtelligent\Mtelligent.Configuration\obj\Debug\Mtelligent.Configuration.dll
-C:\projects\Mtelligent\Mtelligent.Configuration\obj\Debug\Mtelligent.Configuration.pdb

@@ -17,11 +17,7 @@ C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Microsoft.Web.Infrastructure
 C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Microsoft.Web.Mvc.dll
 C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
 C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Microsoft.Web.WebPages.OAuth.dll
-C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Mtelligent.Configuration.dll
 C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Mtelligent.Dashboard.Data.dll
-C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Mtelligent.Data.dll
-C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Mtelligent.Entities.dll
-C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Mtelligent.Web.dll
 C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Newtonsoft.Json.dll
 C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\System.Net.Http.Formatting.dll
 C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\System.Spatial.dll
@@ -40,11 +36,7 @@ C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\WebMatrix.Data.dll
 C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\WebMatrix.WebData.dll
 C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll
 C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
-C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Mtelligent.Configuration.pdb
 C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Mtelligent.Dashboard.Data.pdb
-C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Mtelligent.Data.pdb
-C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Mtelligent.Entities.pdb
-C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Mtelligent.Web.pdb
 C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Antlr3.Runtime.pdb
 C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Newtonsoft.Json.xml
 C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\System.Web.Optimization.xml
@@ -113,3 +105,5 @@ C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Ninject.Web.Common.pdb
 C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Ninject.Web.Common.xml
 C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Ninject.Web.Mvc.pdb
 C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Ninject.Web.Mvc.xml
+C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Mtelligent.dll
+C:\projects\Mtelligent\Mtelligent.Dashboard.Web\bin\Mtelligent.pdb

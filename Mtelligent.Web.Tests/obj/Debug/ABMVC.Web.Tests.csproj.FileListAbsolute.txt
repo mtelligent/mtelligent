@@ -1,7 +1,0 @@
-C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Web.Tests\obj\Debug\ABMVC.Web.Tests.csprojResolveAssemblyReference.cache
-C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Web.Tests\obj\Debug\ABMVC.Web.Tests.dll
-C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Web.Tests\bin\Debug\ABMVC.Web.Tests.dll
-C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Web.Tests\bin\Debug\ABMVC.Web.Tests.pdb
-C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Web.Tests\bin\Debug\nunit.framework.dll
-C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Web.Tests\bin\Debug\nunit.framework.xml
-C:\projects\ABMVC\ABMVC\ABMVC\ABMVC.Web.Tests\obj\Debug\ABMVC.Web.Tests.pdb
