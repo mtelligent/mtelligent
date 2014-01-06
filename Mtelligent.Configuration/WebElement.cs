@@ -44,6 +44,19 @@ namespace Mtelligent.Configuration
                 this["captureAllRequests"] = value;
             }
         }
+
+        [ConfigurationProperty("cacheDuration", DefaultValue = "60", IsRequired = false)]
+        public int CacheDuration
+        {
+            get
+            {
+                return (int)this["cacheDuration"];
+            }
+            set
+            {
+                this["cacheDuration"] = value;
+            }
+        }
 	}
 }
 

@@ -81,6 +81,15 @@ namespace Mtelligent.Web
             //get experiment from DB
             var experiment = getExperiment(experimentName);
 
+            if (!string.IsNullOrEmpty(HttpContext.Current.Request["Hypothesis"]))
+            {
+                var overrideSegment = experiment.Segments.FirstOrDefault(a => a.SystemName == HttpContext.Current.Request["Hypothesis"]);
+                if (overrideSegment != null)
+                {
+                    return overrideSegment;
+                }
+            }
+
             validateAndLoadVisitor();
 
             return GetHypothesis(experiment, CurrentVisitor);
@@ -257,12 +266,13 @@ namespace Mtelligent.Web
 
         private static Experiment getExperiment(string experimentName)
         {
-            if (!experiments.ContainsKey(experimentName))
+            if (HttpContext.Current.Cache[experimentName] == null)
             {
-                experiments.Add(experimentName, _visitProvider.GetExperiment(experimentName));
+                var experiment = _visitProvider.GetExperiment(experimentName);
+                HttpContext.Current.Cache.Insert(experimentName, experiment, null, DateTime.Now.AddMinutes(_config.Web.CacheDuration), TimeSpan.Zero);
             }
 
-            return experiments[experimentName];
+            return HttpContext.Current.Cache[experimentName] as Experiment;
         }
 
         private bool userIsInCohort(Visitor visitor, Cohort cohort)

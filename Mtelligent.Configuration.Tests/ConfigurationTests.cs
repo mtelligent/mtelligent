@@ -39,6 +39,7 @@ namespace Mtelligent.Configuration.Tests
             var config = (MtelligentSection)ConfigurationManager.GetSection("Mtelligent");
             Assert.AreEqual<bool>(true, config.Web.UseSession);
             Assert.AreEqual<bool>(false, config.Web.CaptureAllRequests);
+            Assert.AreEqual<int>(120, config.Web.CacheDuration);
         }
 	}
 }
