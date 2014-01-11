@@ -26,6 +26,8 @@ namespace Mtelligent.Data
         Visitor AddVisitor(Visitor visitor);
 
         void RemoveVisitorAttribute(Visitor visitor, string name);
+
+        Cohort GetCohort(string systemName);
         
 	}
 }

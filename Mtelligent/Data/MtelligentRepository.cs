@@ -180,6 +180,26 @@ namespace Mtelligent.Data
             return visitor;
         }
 
+        public Cohort GetCohort(string systemName)
+        {
+            var cohorts = new List<Cohort>();
+
+            using (DbCommand cmd = _db.GetSqlStringCommand(MtelligentQueries.GetCohort))
+            {
+                _db.AddInParameter(cmd, "@SystemName", DbType.String, systemName);
+
+                using (IDataReader reader = _db.ExecuteReader(cmd))
+                {
+                    while (reader.Read())
+                    {
+                        return ReaderToCohort(reader);
+                    }
+                }
+            }
+
+            return null;
+        }
+
         public Entities.Visitor GetCohorts(Entities.Visitor visitor)
         {
             if (visitor.Cohorts == null)

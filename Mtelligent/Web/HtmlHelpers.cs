@@ -21,6 +21,10 @@ namespace Mtelligent.Web
             return new MvcHtmlString("Not found");
         }
 
+        public static bool IsVisitorInCohort(this HtmlHelper helper, string cohortSystemName)
+        {
+            return ExperimentManager.Current.IsVisitorInCohort(cohortSystemName);
+        }
 	}
 }
 

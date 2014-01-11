@@ -76,6 +76,18 @@ namespace Mtelligent.Web
             }
         }
 
+        public bool IsVisitorInCohort(string cohortSystemName)
+        {
+            var cohort = _visitProvider.GetCohort(cohortSystemName);
+
+            if (cohort != null)
+            {
+                validateAndLoadVisitor();
+                return cohort.IsInCohort(CurrentVisitor);
+            }
+            return false;
+        }
+
         public ExperimentSegment GetHypothesis(string experimentName)
         {
             //get experiment from DB

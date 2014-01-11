@@ -91,4 +91,7 @@
   <ItemGroup>
     <None Include="Scripts\Indexes.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\AddHoneyVsVinegarExperiment.sql" />
+  </ItemGroup>
 </Project>

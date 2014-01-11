@@ -29,6 +29,17 @@
           }
 
           <hr />
+          <p class="lead">Below you will see oone of two messages depending on whether you are in the authenticated users cohort.</p>
+          @if (@Html.IsVisitorInCohort("Authenticated Users"))
+          {
+              <p>You are in the Authenticated User Cohort.</p>
+          }
+          else          
+          {
+              <p>You are not in the Authenticated User Cohort.</p>
+          }
+
+          <hr />
           <h2>How it Works</h2>
           <p>The code to produce the above result is pretty simple:</p>
           <p><pre>
@@ -50,6 +61,18 @@ else
     ViewBag.Message = "We knew you would do as you were told. Carry on worm.";
 }
              </pre></p>
-
+          <p>
+              And here is the code that checks if the user is in a cohort:
+          </p>
+<p><pre>
+@@if (@@Html.IsVisitorInCohort("Authenticated Users"))
+{
+    &lt;p&gt;You are in the Authenticated User Cohort.&lt;/p&gt;
+}
+else          
+{
+    &lt;p&gt;You are not in the Authenticated User Cohort.&lt;/p&gt;
+}
+             </pre></p>
     </div>
 </div>

@@ -101,5 +101,6 @@ namespace Mtelligent.Data
         public const string AddVisitorSegment = @"If not exists (Select 1 from VisitorSegments (nolock) where VisitorId=@VisitorId and SegmentId=@SegmentId)
             Insert into VisitorSegments (VisitorId, SegmentId, ExperimentId) values (@VisitorId, @SegmentId, @ExperimentId)";
 
+        public const string GetCohort = @"Select * from Cohorts where SystemName = @SystemName";
     }
 }
