@@ -2,6 +2,7 @@
 
 @{
     var counter=0;
+    List<Mtelligent.Configuration.CohortType> editable = ViewBag.Editable as List<Mtelligent.Configuration.CohortType>;
 }
 <div class="content">
   <div class="row">
@@ -31,7 +32,7 @@
                 <td>@cohort.SystemName</td>
                 <td>@cohort.TypeName</td>
                 <td>
-                    @if (counter > 2)
+                    @if (editable.FirstOrDefault(a=>a.TypeName == cohort.TypeName) != null)
                     {
                         <a href="/Cohorts/Update?Id=@cohort.Id" class="btn btn-primary btn-lg active" role="button">Edit</a>
                     }

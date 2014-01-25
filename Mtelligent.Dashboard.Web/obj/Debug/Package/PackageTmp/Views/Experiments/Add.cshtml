@@ -1,0 +1,97 @@
+﻿@model Mtelligent.Dashboard.Web.ViewModels.ExperimentViewModel
+
+@{
+    string errorMessage = ViewBag.ErrorMessage ?? "";
+}
+
+<div class="content">
+  <div class="row">
+
+    <h1>Add Experiment</h1>
+
+      
+      @using (Html.BeginForm("Add", "Experiments", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "expForm" }))
+      {
+           @Html.AntiForgeryToken()
+           @Html.ValidationSummary(true)
+
+            if (!string.IsNullOrEmpty(errorMessage))
+            {
+                <div class="alert alert-danger">@errorMessage</div>
+            }
+        
+            <div class="form-group">
+            @Html.LabelFor(m => m.Experiment.Name, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.Experiment.Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Experiment.Name)
+            </div>
+            </div>
+           <div class="form-group">
+            @Html.LabelFor(m => m.Experiment.SystemName, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.Experiment.SystemName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Experiment.SystemName)
+            </div>
+            </div>
+            <div class="form-group">
+            @Html.LabelFor(m => m.Experiment.TargetCohortId, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                    @Html.DropDownListFor(m => m.Experiment.TargetCohortId, new SelectList(Model.Cohorts, "Id", "Name"), "Select a Cohort", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Experiment.TargetCohortId)
+            </div>
+            </div>
+          
+            <div class="form-group">
+            @Html.LabelFor(m => m.Experiment.GoalIds, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                    @Html.ListBoxFor(m => m.Experiment.GoalIds, new SelectList(Model.Goals, "Id", "Name"), new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Experiment.GoalIds)
+            </div>
+            </div>
+          
+            <div data-bind="foreach: variables">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="variable-1" data-bind="text: $index() == 0 ? 'Variables' : ''"></label>
+                    <div class="col-sm-10">
+                        <span class="glyphicon glyphicon-plus" data-bind="click: viewModel.addVariable" title="Add Another" style="position:absolute; right:-5px; margin-top:7px; margin-left:10px; cursor:pointer"></span> <input class="form-control" data-val="false" data-bind="attr: { id: 'variable-' + $index(), name: 'variable-' + $index() }" type="text" value="">
+                    </div>
+                </div>
+            </div>
+          
+            <input type="hidden" id="hidNumVariables" name="hidNumVariables" data-bind="value: variables().length" />
+          
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div><button type="submit" class="btn btn-default">Add Experiment</button></div>
+                </div>
+            </div>  
+      }
+
+       <hr />
+
+      <h2>Hypotheses</h2>
+
+      <p class="lead">Hypotheses are proposed variations of an experiment. The Default Hypothesis will be shown to users that are not in the target cohort.</p>
+          
+      <div class="alert alert-info">You must create the experiment before you can add any hypotheses. After you Add the Experiment, click "Edit" next to the experiment to configure hypotheses. </div>
+
+@section Scripts {
+      <script src="~/Scripts/knockout-3.0.0.js"></script>
+      <script src="~/Scripts/Experiment.js" ></script>
+      <script>
+          $(document).ready(function () {
+              $("#Experiment_SystemName").focus(function () {
+                  if ($("#Experiment_Name").val() != "" && $("#Experiment_SystemName").val() == "") {
+                      $("#Experiment_SystemName").val($("#Experiment_Name").val());
+                  }
+              });
+
+              viewModel.addVariable();
+
+              ko.applyBindings(viewModel);
+          });
+
+      </script>
+
+}

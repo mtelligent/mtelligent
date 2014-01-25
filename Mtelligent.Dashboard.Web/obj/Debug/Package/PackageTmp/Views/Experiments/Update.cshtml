@@ -1,0 +1,208 @@
+﻿@model Mtelligent.Dashboard.Web.ViewModels.ExperimentViewModel
+
+@{
+    string errorMessage = ViewBag.ErrorMessage ?? "";
+}
+
+<div class="content">
+  <div class="row">
+
+    <h1>Edit Experiment</h1>
+
+      
+      @using (Html.BeginForm("Update", "Experiments", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "expForm" }))
+      {
+           @Html.AntiForgeryToken()
+           @Html.ValidationSummary(true)
+
+           @Html.HiddenFor(m=>m.Experiment.Id)
+
+            if (!string.IsNullOrEmpty(errorMessage))
+            {
+                <div class="alert alert-danger">@errorMessage</div>
+            }
+        
+            <div class="form-group">
+            @Html.LabelFor(m => m.Experiment.Name, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.Experiment.Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Experiment.Name)
+            </div>
+            </div>
+           <div class="form-group">
+            @Html.LabelFor(m => m.Experiment.SystemName, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.Experiment.SystemName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Experiment.SystemName)
+            </div>
+            </div>
+            <div class="form-group">
+            @Html.LabelFor(m => m.Experiment.TargetCohortId, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                    @Html.DropDownListFor(m => m.Experiment.TargetCohortId, new SelectList(Model.Cohorts, "Id", "Name"), "Select a Cohort", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Experiment.TargetCohortId)
+            </div>
+            </div>
+            <div class="form-group">
+            @Html.LabelFor(m => m.Experiment.GoalIds, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                    @Html.ListBoxFor(m => m.Experiment.GoalIds, new SelectList(Model.Goals, "Id", "Name"), new { @class = "form-control", size=5 })
+                    @Html.ValidationMessageFor(m => m.Experiment.GoalIds)
+            </div>
+            </div>
+            <div data-bind="foreach: variables">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="variable-1" data-bind="text: $index() == 0 ? 'Variables' : ''"></label>
+                    <div class="col-sm-10">
+                        <span class="glyphicon glyphicon-plus" data-bind="click: viewModel.addVariable" title="Add Another" style="position:absolute; right:-5px; margin-top:7px; margin-left:10px; cursor:pointer"></span> <input class="form-control" data-val="false" data-bind="    attr: { id: 'variable-' + $index(), name: 'variable-' + $index() }, value : $data, disable: $index() < viewModel.initalVariableCount()" type="text">
+                    </div>
+                </div>
+            </div>
+          
+            <input type="hidden" id="hidNumVariables" name="hidNumVariables" data-bind="value: variables().length" />
+          
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div><button type="submit" class="btn btn-default">Update Experiment</button></div>
+                </div>
+            </div>  
+      }
+
+
+      <hr />
+
+      <h2>Hypotheses</h2>
+
+      <p class="lead">Hypotheses are proposed variations of an experiment. The Default Hypothesis will be shown to users that are not in the target cohort.</p>
+           
+      <div class="alert alert-danger hide" id="clientSideErrors"></div>
+
+    @if (Model.Experiment.Segments.Count == 0)
+    {
+        <div class="alert alert-info">You currently have not configured any hypotheses. Click "Add Hypothesis" to add a hypothesis to this experiment. </div>
+    }
+    else
+    {
+        using (Html.BeginForm("UpdateSegments", "Experiments", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "segForm" }))
+        {
+            <input type="hidden" name="experimentId" value="@Model.Experiment.Id" />
+        
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th>System Name</th>
+                <th>Target Percentage <span class="glyphicon glyphicon-resize-vertical" style="cursor:pointer" title="Auto Distribute Among Non Default Options" id="btnDistribute"></span></th>
+                <th>Is Default</th>
+                <th>&nbsp;</th>
+            </tr>
+
+        @foreach (var segment in Model.Experiment.Segments)
+        {
+            <tr>
+                <td>@segment.Name</td>
+                <td>@segment.SystemName</td>
+                <td><input class="form-control targetPercentage" name="@segment.Id-TargetPercentage" type="text" value="@segment.TargetPercentage" /></td>
+                <td><input class="form-control isDefault" name="@segment.Id-IsDefault" type="checkbox" checked="@segment.IsDefault" value="true" /></td>
+                <td><a href="/Experiments/UpdateSegment?experimentId=@Model.Experiment.Id&segmentId=@segment.Id" class="btn btn-primary btn-lg active" role="button">Edit Details</a></td>
+            </tr>
+            
+        }
+        </table>
+
+        <div class="form-group">
+            <div class="col-sm-10">
+                <div><button type="submit" class="btn btn-default">Save Hypotheses Changes</button></div>
+            </div>
+        </div>  
+        <hr />
+        
+        }
+        
+    }
+
+    <a href="/Experiments/AddSegment?Id=@Model.Experiment.Id" class="btn btn-primary btn-lg active" role="button">Add Hypothesis</a>
+@section Scripts {
+      <script src="~/Scripts/knockout-3.0.0.js"></script>
+      <script src="~/Scripts/Experiment.js" ></script>
+      <script>
+          var variables = @Html.Raw(Json.Encode(Model.Experiment.Variables));
+
+          $(document).ready(function () {
+              if ($("#Experiment_SystemName").val() != "") {
+                  $("#Experiment_SystemName").attr("disabled", "disabled");
+                  $("#Experiment_SystemName").after("<input type='hidden' name='" + $("#Experiment_SystemName").attr("name") + "' value='" + $("#Experiment_SystemName").val() + "'>");
+              }
+
+              $.each(variables, function(index, variable){
+                  viewModel.variables.push(variable);
+              });
+              
+              viewModel.initalVariableCount(viewModel.variables().length);
+
+              ko.applyBindings(viewModel);
+
+              $(".isDefault").change(function(){
+                  if ($(this).prop('checked')){
+                      $(".isDefault").prop('checked', false);
+                      $(this).prop('checked', true);
+                  }
+              });
+
+              $("#btnDistribute").click(function(){
+                  var numItems = $(".isDefault").length
+                  var defID;
+
+                  if ($("input.isDefault:checkbox:checked").length > 0){
+                      numItems = numItems-1;
+                      defID = $("input.isDefault:checkbox:checked").attr("name").split("-")[0];
+                  }
+                  var distribution = Math.floor(100/numItems);
+
+                  var lastItem;
+                  
+                  $(".targetPercentage").each(function(index, item){
+                      if ($(item).attr("name").split("-")[0] != defID){
+                          $(item).val(distribution);
+                          lastItem = $(item);
+                      }
+                      else{
+                          $(item).val("0");
+                      }
+                        
+                  });
+
+                  lastItem.val(distribution + (100 - (numItems * distribution)));
+
+              });
+
+              $("#segForm").submit(function(event){
+                  console.log("trying to submit form");
+
+                  $("#clientSideErrors").addClass("hide");
+                  
+                  var sum = 0;
+                  $(".targetPercentage").each(function(index, item){
+                      console.log("adding:"  +  $(item).val());
+                      sum +=  parseFloat($(item).val());
+                  });
+
+                  console.log("sum:"  + sum);
+
+                  if (sum != 100){
+                      $("#clientSideErrors").text("The Sum of the Target Percentages must equal 100.");
+                      $("#clientSideErrors").removeClass("hide");
+                      event.preventDefault();
+                  }
+
+                  if ($("input.isDefault:checkbox:checked").length == 0 && $("#Experiment_TargetCohortId option:selected").text() != "All Users")
+                  {
+                      $("#clientSideErrors").text("Since this experiment does not target all users, one of the options must be the default options.");
+                      $("#clientSideErrors").removeClass("hide");
+                      event.preventDefault();
+                  }
+              });
+          });
+
+      </script>
+
+}

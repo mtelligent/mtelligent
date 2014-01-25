@@ -1,0 +1,69 @@
+@using System.Web.Optimization
+@using BootstrapSupport
+@using NavigationRoutes
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>@ViewBag.Title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="@Styles.Url("~/content/css")" rel="stylesheet"/>
+        @RenderSection("head", required: false)
+        @Html.Partial("_html5shiv")
+        @* favicons and touch icons go here *@
+    </head>
+    <body>
+        <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+          <div class="container">
+            <div class="navbar-header">
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a href="/" class="navbar-brand">mtelligent</a>
+            </div>
+            <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+              <ul class="nav navbar-nav">
+                <li>
+                  <a href="/">Dashboard</a>
+                </li>
+                <li>
+                  <a href="/Experiments">Experiments</a>
+                </li>
+                <li>
+                  <a href="/Goals">Goals</a>
+                </li>
+                <li>
+                  <a href="/Cohorts">Cohorts</a>
+                </li>
+                <li>
+                  <a href="/Sites">Sites</a>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <a href="/Samples/">About</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </header>
+
+
+
+        <div class="container">
+            @Html.Partial("_alerts")
+            @Html.Partial("_validationSummary")
+            @RenderBody()   
+            <hr>
+            <footer>
+                <p>&copy; mtelligent @System.DateTime.Now.ToString("yyyy")</p>
+            </footer> 
+        </div>
+         @Scripts.Render("~/js")
+         @RenderSection("Scripts", required: false)
+    </body>
+</html>
+

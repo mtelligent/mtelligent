@@ -1,0 +1,78 @@
+﻿@using Mtelligent.Web
+
+@{
+    ViewBag.Title = "Index";
+    string message = ViewBag.Message;
+    
+}
+
+<div class="content">
+      <div class="row">
+          <h1>About</h1>
+
+          <p class="lead">The section below is an experiment in action. Just by visiting you are automatically assigned a hypothesis and the text below will look and read differently depending on which hypothesis you were selected to receive. Click the button, or don't click the button. In the end the Mtelligent framework will tell you which text is more effective at getting your users to click the button.</p>
+          <hr />
+          @if (!string.IsNullOrEmpty(message))
+          {
+              <div class="alert alert-info">@message</div>
+          }
+          <h3 style="color:@Html.GetHypothesisVariable("Honey vs Vinegar", "TitleColor")">@Html.GetHypothesisVariable("Honey vs Vinegar", "Title")</h3>
+
+          <p class="lead">@Html.GetHypothesisVariable("Honey vs Vinegar", "Copy")</p>
+          <p align="center">
+          <img src="@Html.GetHypothesisVariable("Honey vs Vinegar", "Image Source")" />
+          </p>
+          @using (Html.BeginForm())
+          {
+            <input type="hidden" name="post" value="post" />
+            <button type="submit" class="btn btn-primary btn-lg active" role="button">Click Me</button>
+          }
+
+          <hr />
+          <p class="lead">Below you will see oone of two messages depending on whether you are in the authenticated users cohort.</p>
+          @if (@Html.IsVisitorInCohort("Authenticated Users"))
+          {
+              <p>You are in the Authenticated User Cohort.</p>
+          }
+          else          
+          {
+              <p>You are not in the Authenticated User Cohort.</p>
+          }
+
+          <hr />
+          <h2>How it Works</h2>
+          <p>The code to produce the above result is pretty simple:</p>
+          <p><pre>
+&lt;h3 style=&quot;color:@@Html.GetHypothesisVariable(&quot;Honey vs Vinegar&quot;, &quot;TitleColor&quot;)&quot;&gt;@@Html.GetHypothesisVariable(&quot;Honey vs Vinegar&quot;, &quot;Title&quot;)&lt;/h3&gt;
+&lt;p class=&quot;lead&quot;&gt;@@Html.GetHypothesisVariable(&quot;Honey vs Vinegar&quot;, &quot;Copy&quot;)&lt;/p&gt;
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;@@Html.GetHypothesisVariable(&quot;Honey vs Vinegar&quot;, &quot;Image Source&quot;)&quot; /&gt;
+&lt;/p&gt;</pre></p>
+          <p>The framework automatically looks up the experiment, assigns a hypothesis and returns any variable your request. On the post, here is the code that registers the conversion and then changes the response method depending on which hypothosis you are associated with.</p>
+          <p><pre>
+ExperimentManager.Current.AddConversion("Honey vs Vinegar");
+
+if (ExperimentManager.Current.GetHypothesis("Honey vs Vinegar").SystemName == "Honey")
+{
+    ViewBag.Message = "Thanks you so much you wonderful user.";
+}
+else
+{
+    ViewBag.Message = "We knew you would do as you were told. Carry on worm.";
+}
+             </pre></p>
+          <p>
+              And here is the code that checks if the user is in a cohort:
+          </p>
+<p><pre>
+@@if (@@Html.IsVisitorInCohort("Authenticated Users"))
+{
+    &lt;p&gt;You are in the Authenticated User Cohort.&lt;/p&gt;
+}
+else          
+{
+    &lt;p&gt;You are not in the Authenticated User Cohort.&lt;/p&gt;
+}
+             </pre></p>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+﻿@model Mtelligent.Dashboard.Web.Models.RegisterModel
+
+
+  <div class="content">
+      <div class="row">
+
+          <h1>Register</h1>
+
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserName, new { @class="col-sm-2 control-label"})
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password, new { @class="col-sm-2 control-label"})
+        <div class="col-sm-10">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ConfirmPassword, new { @class="col-sm-2 control-label"})
+        <div class="col-sm-10">    
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+         </div>
+    </div>
+    
+    <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Sign Up</button>
+    </div>
+    </div>
+}
+
+          </div>
+      </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -71,6 +71,7 @@
     <Compile Include="Entities\Cohorts\FirstVisitCohort.cs" />
     <Compile Include="Entities\Cohorts\GoalCohort.cs" />
     <Compile Include="Entities\Cohorts\LandingUrlCohort.cs" />
+    <Compile Include="Entities\Cohorts\NonAuthenticatedUsersCohort.cs" />
     <Compile Include="Entities\Cohorts\ReferrerCohort.cs" />
     <Compile Include="Entities\Cohorts\RoleCohort.cs" />
     <Compile Include="Entities\Cohorts\SegmentCohort.cs" />

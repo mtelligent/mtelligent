@@ -29,6 +29,10 @@ namespace Mtelligent.Dashboard.Web.Controllers
         public ActionResult Index()
         {
             var cohorts = cohortRepository.GetAll();
+
+            var config = (MtelligentSection)ConfigurationManager.GetSection("Mtelligent");
+            ViewBag.Editable = config.Cohorts.ToList().Where(a => a.AllowNew).ToList();
+
             return View(cohorts);
         }
 

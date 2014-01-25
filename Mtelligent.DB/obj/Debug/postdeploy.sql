@@ -16,4 +16,13 @@ Insert into Cohorts (Name, SystemName, Type, Created, CreatedBy) Values ('Authen
 
 end
 
+
+Select * from Cohorts where Type = 'Mtelligent.Entities.Cohorts.NonAuthenticatedUsersCohort, Mtelligent';
+
+if (@@ROWCOUNT = 0)
+begin
+
+Insert into Cohorts (Name, SystemName, Type, Created, CreatedBy) Values ('Non Authenticated Users', 'Non Authenticated users', 'Mtelligent.Entities.Cohorts.NonAuthenticatedUsersCohort, Mtelligent', getDate(), 'System')
+
+end
 GO
