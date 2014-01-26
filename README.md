@@ -1,7 +1,7 @@
 mtelligent
 ==========
 
-Cohort Analysis, AB and Multivariant Testing Framework for Asp.Net
+Written in C#, mtelligent is a cohort analysis, AB and multivariant testing framework for ASP.Net
 
 Heavily inspired by the lean startup, I set out to build a framework for ASP.Net to support the kind of validated learning   the lean start up methodology advocates. It's still very rough, but I wanted to put it out there to get some feedback before moving further. For now, the working title is mtelligent, because I always loved the domain (my blog runs on it) and it sort of fits: Marketing Intelligence.
 
