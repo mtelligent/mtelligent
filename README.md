@@ -23,7 +23,7 @@ Experiments have both a name and System Name. Once Created the System Name canno
 
 **Hypotheses**
 
-![Add Hypotheses](https://github.com/mtelligent/mtelligent/blob/master/screenshots/AddHypothesis.png)
+![Add Hypothesis](https://raw2.github.com/mtelligent/mtelligent/master/screenshots/AddHypothesis.png)
 
 After you create your experiment, you can then add hypotheses to it. Each Hypothesis requires you to give it both a name and system name and provide variable values that are specific to that hypothesis. Users will only ever be shown one hypothesis for an experiment ever as a tracking cookie is used to identify the user and details about what segment of the experiment the user see is stored in the backend database. 
 
@@ -71,43 +71,45 @@ Also note we keep track of all of a visitors landing pages and referrers. A land
 
 Most of the API is facaded through the ExperimentManager class. It is implemented as a Singleton and exposes the following methods:
 
-**Initialize **
+**Initialize**<br/> 
 This method must be called in the constructor of the HttpApplication in your site's Global.asax. It hooks into two events: 
 - Authenticate Request - Initializes the Visitor either from the cookie or User Name (if they are logged in). 
 - PreSendRequestHeaders - Spawns a thread to commit any visitor details to the database. Where possible we try to avoid making any database calls until the end of the request in a separate thread to avoid impacting performance.
 
 Also note that we have implemented logic to reconcile users if they have activity before logging in and had a pre-existing visitor record. We also detect when the username changes to ensure every user name is associated with a separate visitor record.
 
-**AddConversion**
+**AddConversion**<br/> 
 Pass the system name of the goal you wish to register a conversion for and this method handles the rest.
 
-**AddVisitorAttribute**
+**AddVisitorAttribute**<br/> 
 If you're using Attribute Cohorts, use this method to save details about a visitor that could be used to segment them later.
 
-**RemoveVisitorAttribute**
+**RemoveVisitorAttribute**<br/> 
 Remove the attribute associated with a user with this method.
 
-**GetHypothesis**
+**GetHypothesis**<br/> 
 Pass the experiment name and get back details about the hypothesis the current visitor is assigned. If none are assigned it automatically will pick one based on the target percentages. If the user isn't in the target cohort, they will get back the default hypothesis. 
 
 For Testing if you want to ensure you receive a specific hypothesis you can override the normal functionality by appending "?Hypothesis=System Name of Hypothesis" to your querystring.
 
-**IsVisitorInCohort**
+**IsVisitorInCohort**<br/> 
 If you're less interested in running experiments and more interested in targeting different user cohorts, use this method to determine if the current visitor is in any of your configured system cohorts. 
 
 **HtmlHelpers**
-For convenience, we also implemented a couple of HtmlHelpers to make it easy to get hypotheses details from Razor
 
-**GetHypothesis**
+For convenience, we also implemented a couple of HtmlHelpers to make it easy to get hypotheses details from Razor:
+
+**GetHypothesis**<br/> 
 Same as the Experiment Manager method, but useful if you need to execute control flow based on the hypothesis name or other parameters.
 
-**GetHypothesisVariable**
+**GetHypothesisVariable**<br/> 
 Pass the experiment name and variable name and get back the string variable value associated with the users assigned hypothesis.
 
-**IsVisitorInCohort**
+**IsVisitorInCohort**<br/> 
 Same as the Experiment Manager method.
 
 **The Dashboard**
+
 To keep score, I've implemented a rather simplistic dashboard that shows visitors in each hypotheses and conversions and conversion value for each active experiment.
 
 ![Dashboard](https://raw2.github.com/mtelligent/mtelligent/master/screenshots/Dashboard.png)
