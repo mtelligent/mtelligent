@@ -122,7 +122,7 @@ I haven't done a ton of testing and there is still plenty of work to do. I donâ€
 
 The solution is pretty straightforward, with the library code in the Mtelligent project, and the Dashboard code in the Mtelligent.Dashboard project. The backend database is SQL Server and have everything in a SQL Database project.  So theoretically, you just need to deploy the database project, update your connection strings as needed and you'll be good to go. 
 
-If you're integrating into your own project, you just need to add the reference to the Mtelligent assembly, copy the connection string and custom config section to your web config from the Dashboard (or test project), call the initialize method in your global asax and start coding to the experiments you configured when running the dashboard pointing to the same database.
+If you're integrating into your own project, you just need to add the reference to the Mtelligent assembly, copy the connection string and custom config section to your web config from the Dashboard (or test project), configure the Mtelligent Http Module and start coding to the experiments you configured when running the dashboard pointing to the same database.
 
 
 
