@@ -1,4 +1,3 @@
-C:\projects\Mtelligent\MVCExperiments\obj\Debug\MVCExperiments.csprojResolveAssemblyReference.cache
 C:\projects\Mtelligent\MVCExperiments\bin\MVCExperiments.dll
 C:\projects\Mtelligent\MVCExperiments\bin\MVCExperiments.pdb
 C:\projects\Mtelligent\MVCExperiments\bin\Antlr3.Runtime.dll
@@ -87,5 +86,6 @@ C:\projects\Mtelligent\MVCExperiments\bin\ko\System.Spatial.resources.dll
 C:\projects\Mtelligent\MVCExperiments\bin\ru\System.Spatial.resources.dll
 C:\projects\Mtelligent\MVCExperiments\bin\zh-Hans\System.Spatial.resources.dll
 C:\projects\Mtelligent\MVCExperiments\bin\zh-Hant\System.Spatial.resources.dll
+C:\projects\Mtelligent\MVCExperiments\obj\Debug\MVCExperiments.csprojResolveAssemblyReference.cache
 C:\projects\Mtelligent\MVCExperiments\obj\Debug\MVCExperiments.dll
 C:\projects\Mtelligent\MVCExperiments\obj\Debug\MVCExperiments.pdb

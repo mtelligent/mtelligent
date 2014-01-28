@@ -23,8 +23,8 @@ namespace Mtelligent.Web
         /// <param name="app"></param>
         public void Initialize(HttpApplication app)
         {
-            app.AuthenticateRequest += HandlePostAuthorizeRequest;
-            app.PreSendRequestHeaders += HandlePreSendRequestHeaders;
+            app.PreRequestHandlerExecute += InitializeRequest;
+            app.PreSendRequestHeaders += FinalizeRequest;
         }
 
         public void AddConversion(string goalName)
@@ -236,12 +236,12 @@ namespace Mtelligent.Web
 
         #region Request Handlers
 
-        protected void HandlePostAuthorizeRequest(object sender, EventArgs e)
+        protected void InitializeRequest(object sender, EventArgs e)
         {
             GetVisitor(HttpContext.Current);
         }
 
-        protected void HandlePreSendRequestHeaders(object sender, EventArgs e)
+        protected void FinalizeRequest(object sender, EventArgs e)
 		{
             //reconcille user if user is authenticated and we have gotten the details that said they were not authenticated.
             validateAndLoadVisitor();
@@ -305,6 +305,11 @@ namespace Mtelligent.Web
 
         private void validateAndLoadVisitor()
         {
+            if (CurrentVisitor == null)
+            {
+                CurrentVisitor = GetVisitor(HttpContext.Current);
+            }
+
             if (!CurrentVisitor.DetailsLoaded)
                 {
                     //reload Details
@@ -351,7 +356,7 @@ namespace Mtelligent.Web
                     }
 
 
-                    if (!string.IsNullOrEmpty(saved.UserName) && saved.UserName != HttpContext.Current.User.Identity.Name)
+                    if (!string.IsNullOrEmpty(saved.UserName) && HttpContext.Current.User != null && saved.UserName != HttpContext.Current.User.Identity.Name)
                     {
                         //Update CurrentVisitor to Saved User.
                         var oldRequest = CurrentVisitor.Request;

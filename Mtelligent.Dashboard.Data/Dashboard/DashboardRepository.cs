@@ -12,6 +12,11 @@ namespace Mtelligent.Dashboard.Data
 {
     public class DashboardRepository : SQLRepository, IDashboardRepository
     {
+        public DashboardRepository()
+        {
+            _db = GetDatabase();
+        }
+
         public List<ExperimentSummary> GetExperimentStatuses()
         {
             var summaries = new Dictionary<int, ExperimentSummary>();

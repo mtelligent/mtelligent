@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\v11.0;Initial Catalog=aspnet-Mtelligent.Dashboard.Web-20131229212024;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\aspnet-Mtelligent.Dashboard.Web-20131229212024.mdf" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\projects\\Mtelligent\\Mtelligent\.Dashboard\.Web\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
-  </parameter>
-  <parameter name="MtelligentDB-Web.config Connection String" description="MtelligentDB Connection String used in web.config by the application to access the database." defaultValue="Data Source=.;Initial Catalog=MtelligentDB;Integrated Security=True" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\projects\\Mtelligent\\Mtelligent\.Dashboard\.Web\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MtelligentDB']/@connectionString" />
-  </parameter>
-</parameters>

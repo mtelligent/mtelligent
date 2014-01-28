@@ -84,6 +84,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web\ExperimentManager.cs" />
     <Compile Include="Web\HtmlHelpers.cs" />
+    <Compile Include="Web\MtelligentModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -15,10 +15,6 @@ namespace Mtelligent.Dashboard.Web
 
     public class MvcApplication : System.Web.HttpApplication
     {
-        public MvcApplication()
-        {
-            ExperimentManager.Current.Initialize(this);
-        }
 
         protected void Application_Start()
         {

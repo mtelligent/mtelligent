@@ -4,6 +4,5 @@ C:\projects\Mtelligent\Mtelligent\bin\Debug\Microsoft.Practices.EnterpriseLibrar
 C:\projects\Mtelligent\Mtelligent\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
 C:\projects\Mtelligent\Mtelligent\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
 C:\projects\Mtelligent\Mtelligent\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
-C:\projects\Mtelligent\Mtelligent\obj\Debug\Mtelligent.csprojResolveAssemblyReference.cache
 C:\projects\Mtelligent\Mtelligent\obj\Debug\Mtelligent.dll
 C:\projects\Mtelligent\Mtelligent\obj\Debug\Mtelligent.pdb

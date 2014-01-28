@@ -12,10 +12,6 @@ namespace WebFormExperiments
 {
     public class Global : HttpApplication
     {
-        public Global()
-        {
-            ExperimentManager.Current.Initialize(this);
-        }
 
         void Application_Start(object sender, EventArgs e)
         {
