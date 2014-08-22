@@ -25,6 +25,12 @@ namespace Mtelligent.Web
         {
             return ExperimentManager.Current.IsVisitorInCohort(cohortSystemName);
         }
+
+        public static MvcHtmlString RenderConversionScripts(this HtmlHelper helper)
+        {
+            return new MvcHtmlString(ExperimentManager.Current.RenderConversionScripts());
+        }
+
 	}
 }
 

@@ -1,6 +1,7 @@
 @using System.Web.Optimization
 @using BootstrapSupport
 @using NavigationRoutes
+@using Mtelligent.Web
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -64,6 +65,7 @@
         </div>
          @Scripts.Render("~/js")
          @RenderSection("Scripts", required: false)
+         @Html.RenderConversionScripts()
     </body>
 </html>
 

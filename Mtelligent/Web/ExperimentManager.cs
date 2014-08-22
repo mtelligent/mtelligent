@@ -7,6 +7,7 @@ using Mtelligent.Entities;
 using System.Threading;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Mtelligent.Web
 {
@@ -33,6 +34,11 @@ namespace Mtelligent.Web
             var goal = _visitProvider.GetGoal(goalName);
             CurrentVisitor.Request.Conversions.Add(goal);
             CurrentVisitor.Conversions.Add(goal);
+        }
+
+        public string RenderConversionScripts()
+        {
+            return GetConversionScripts(CurrentVisitor.Conversions);
         }
 
         public void AddVisitorAttribute(string key, string value)
@@ -275,6 +281,49 @@ namespace Mtelligent.Web
         #endregion
         
         #region Helper Methods
+
+        private static string GetConversionScripts(List<Goal> goals)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<script>");
+            sb.Append(Environment.NewLine);
+            sb.Append("var _gaq = _gaq || [];");
+
+            bool hasTrackingScripts = false;
+
+            foreach (var goal in goals)
+            {
+                if (!string.IsNullOrEmpty(goal.GACode) || !string.IsNullOrEmpty(goal.CustomJS))
+                {
+                    hasTrackingScripts = true;
+
+                    if (!string.IsNullOrEmpty(goal.GACode))
+                    {
+                        sb.Append(Environment.NewLine);
+                        sb.Append(string.Format(@"_gaq.push(['_trackEvent', '{0}', '{1}','']);", goal.GACode, goal.Name));
+                    }
+
+                    if (!string.IsNullOrEmpty(goal.CustomJS))
+                    {
+                        sb.Append(Environment.NewLine);
+                        sb.Append(goal.CustomJS);
+                    }
+
+                }
+            }
+
+            sb.Append("</script>");
+
+
+            if (hasTrackingScripts)
+            {
+                return sb.ToString();
+            }
+
+            return string.Empty;
+        }
+
+        
 
         private static Experiment getExperiment(string experimentName)
         {

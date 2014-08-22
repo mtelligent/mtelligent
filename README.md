@@ -42,9 +42,13 @@ They are pretty simple to setup. You only need to define a name and system name 
 
 ![Add Goal](https://raw2.github.com/mtelligent/mtelligent/master/screenshots/AddGoal.png)
 
-Note I added two additional fields for a google analytics code and custom javascript. These are currently not used, but the idea is that we could automatically render the proper javascript when a conversion has been registered with the API. And speaking of the API, the code to register a conversion is pretty simple as well:
+The code to register a conversion is pretty simple:
 
 > ExperimentManager.Current.AddConversion("Conversion System Name");
+
+The framework will track all the conversions you trigger during the pages lifetime and you can add a method to your master page or master layout to render any custom JavaScript or Google Analytics code related to those coversions.
+
+> @Html.RenderConversionScripts() for MVC or <%= Mtelligent.Web.ExperimentManager.Current.RenderConversionScripts() %> for WebForms
 
 **Cohorts**
 

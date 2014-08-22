@@ -22,7 +22,7 @@ namespace Mtelligent.Entities
         [Display(Name = "System Name")]
         public string SystemName { get; set; }
 
-        [Display(Name = "Google Analytics Code")]
+        [Display(Name = "Google Analytics Category")]
         public string GACode { get; set; }
 
         [Display(Name = "Custom JavaScript.")]

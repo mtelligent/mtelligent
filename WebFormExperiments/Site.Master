@@ -72,6 +72,8 @@
             </div>
         </div>
     </footer>
+        
     </form>
+    <%= Mtelligent.Web.ExperimentManager.Current.RenderConversionScripts() %>
 </body>
 </html>
