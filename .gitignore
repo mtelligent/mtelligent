@@ -12,7 +12,7 @@ TestResults
 *.suo
 *.user
 *.sln.docstates
-
+[aA]pp_Data/
 # Build results
 [Dd]ebug/
 [Rr]elease/
@@ -43,7 +43,7 @@ ipch/
 *.ncb
 *.opensdf
 *.sdf
-
+.vs
 # Visual Studio profiler
 *.psess
 *.vsp
