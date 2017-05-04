@@ -10,7 +10,7 @@ The basic goal of the framework is to enable you to run experiments on your user
 The framework is made up of two components: A class library that can be integrated into your ASP.Net projects by hooking into your Global ASAX Application class and a Dashboard Application that can be used to define meta data about your experiments, hypotheses, cohorts, goals and sites as well as give you basic information about how your experiments are running. (Ignore Sites for now, they are not being using in reporting yet)
 
 
-![Experiments](https://raw2.github.com/mtelligent/mtelligent/master/screenshots/experiments.png)
+![Experiments](/mtelligent/mtelligent/master/screenshots/experiments.png)
 
 **Experiments**
 
