@@ -9,25 +9,24 @@ The basic goal of the framework is to enable you to run experiments on your user
 
 The framework is made up of two components: A class library that can be integrated into your ASP.Net projects by hooking into your Global ASAX Application class and a Dashboard Application that can be used to define meta data about your experiments, hypotheses, cohorts, goals and sites as well as give you basic information about how your experiments are running. (Ignore Sites for now, they are not being using in reporting yet)
 
-
-![Experiments](https://raw.githubusercontent.com/mtelligent/mtelligent/master/screenshots/experiments.png)
+![Experiments](/screenshots/experiments.png)
 
 **Experiments**
 
 Before you can leverage the framework to experiment on your users, you need to define the meta data associated with the experiment. The first step is defining an experiment:
 
 
-![Add Experiment](https://raw.githubusercontent.com/mtelligent/mtelligent/master/screenshots/AddExperiment.png)
+![Add Experiment](/screenshots/AddExperiment.png)
 
 Experiments have both a name and System Name. Once Created the System Name cannot be changed as that is what will be used in code to get details of the experiment from its API. You also need to define what cohort you want to target with this experiment (more on that in the cohort section) and what goals you will use to determine which hypothesis was most successful. You also can define multiple custom variables. Variables enable you to define what are the differences between your hypotheses and allow developers to fully customize the user experience to those variable settings when showing a specific hypothesis to a user.
 
 **Hypotheses**
 
-![Add Hypothesis](https://raw.githubusercontent.com/mtelligent/mtelligent/master/screenshots/AddHypothesis.png)
+![Add Hypothesis](/screenshots/AddHypothesis.png)
 
 After you create your experiment, you can then add hypotheses to it. Each Hypothesis requires you to give it both a name and system name and provide variable values that are specific to that hypothesis. Users will only ever be shown one hypothesis for an experiment ever as a tracking cookie is used to identify the user and details about what segment of the experiment the user see is stored in the backend database. 
 
-![Hypotheses](https://raw.githubusercontent.com/mtelligent/mtelligent/master/screenshots/Hypotheses.png)
+![Hypotheses](/screenshots/Hypotheses.png)
 
 
 Once you create all your hypotheses, you can set their target percentage. This value is used to determine how the random distribution of selection of hypotheses will be made for visitors. The sum of the Target percentages should equal 100 across all hypotheses. If you just want an even distribution, click the icon next to the Target Percentage heading. If you no longer want to test a hypothesis, set the target percentage to 0. If you are not targeting the "All Users" cohort, you also need to check the "Is Default" checkbox on one of your hypothesis. This hypothesis will be used when the visitor is outside the target cohort and their results will not be tracked for the experiment. 
@@ -36,11 +35,11 @@ Once you create all your hypotheses, you can set their target percentage. This v
 
 Goals are how we know which Hypothesis is most successful.  When a user fulfills a goal, we call it a conversion.
 
-![Goals](https://raw.githubusercontent.com/mtelligent/mtelligent/master/screenshots/Goals.png)
+![Goals](/screenshots/Goals.png)
 
 They are pretty simple to setup. You only need to define a name and system name and give it a value. The value needs to be numeric as the sum of the conversions x value is the metric that determines which outcome is best.
 
-![Add Goal](https://raw.githubusercontent.com/mtelligent/mtelligent/master/screenshots/AddGoal.png)
+![Add Goal](/screenshots/AddGoal.png)
 
 The code to register a conversion is pretty simple:
 
@@ -55,7 +54,7 @@ The framework will track all the conversions you trigger during the pages lifeti
 Cohorts give you the ability to segment your users into different groups and then target those groups with specific functionality. You automatically get two cohorts out of the box: "All Users" and "Authenticated Users." These target exactly what you would expect.
 
 
-![Cohorts](https://raw.githubusercontent.com/mtelligent/mtelligent/master/screenshots/Cohorts.png)
+![Cohorts](screenshots/Cohorts.png)
 
 The framework is pretty flexible for defining your own custom cohorts and I've already implemented several customizable cohorts that give you a bunch of ways to segment your users. These include:
 
@@ -116,7 +115,7 @@ Same as the Experiment Manager method.
 
 To keep score, I've implemented a rather simplistic dashboard that shows visitors in each hypotheses and conversions and conversion value for each active experiment.
 
-![Dashboard](https://raw.githubusercontent.com/mtelligent/mtelligent/master/screenshots/Dashboard.png)
+![Dashboard](/screenshots/Dashboard.png)
 
 The more I think about the data being collected, the more opportunities I can see for custom reports that compares cohorts to goals, experiments to other experiments and other metrics. 
 
