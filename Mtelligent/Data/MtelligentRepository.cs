@@ -19,6 +19,7 @@ namespace Mtelligent.Data
 
         public Visitor GetDetails(Visitor visitor)
         {
+            _db = GetDatabase();
             Visitor updated = null;
 
             using (DbCommand cmd = _db.GetSqlStringCommand(MtelligentQueries.GetVisitor))
